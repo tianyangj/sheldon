@@ -23,14 +23,15 @@ angular.module('GameFly', ['ionic'])
     url: '',
     abstract: true,
     templateUrl: 'templates/menu.html',
-    controller: 'AppCtrl'
+    controller: 'appController'
   })
 
   .state('app.games', {
     url: '/games',
     views: {
       'menuContent': {
-        templateUrl: 'templates/games.html'
+        templateUrl: 'templates/games.html',
+        controller: 'gamesController'
       }
     }
   })
@@ -39,7 +40,8 @@ angular.module('GameFly', ['ionic'])
     url: '/movies',
     views: {
       'menuContent': {
-        templateUrl: 'templates/movies.html'
+        templateUrl: 'templates/movies.html',
+        controller: 'moviesController'
       }
     }
   })
