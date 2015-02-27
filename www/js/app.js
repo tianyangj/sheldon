@@ -27,7 +27,7 @@ angular.module('GameFly', ['ionic'])
   })
 
   .state('app.games', {
-    url: '/games',
+    url: '/games/:platform',
     views: {
       'menuContent': {
         templateUrl: 'templates/games.html',
@@ -37,7 +37,7 @@ angular.module('GameFly', ['ionic'])
   })
 
   .state('app.movies', {
-    url: '/movies',
+    url: '/movies/:platform',
     views: {
       'menuContent': {
         templateUrl: 'templates/movies.html',
@@ -47,7 +47,7 @@ angular.module('GameFly', ['ionic'])
   })
 
   .state('app.store', {
-    url: '/store',
+    url: '/store/:platform',
     views: {
       'menuContent': {
         templateUrl: 'templates/store.html'
@@ -55,5 +55,5 @@ angular.module('GameFly', ['ionic'])
     }
   });
 
-  $urlRouterProvider.otherwise('/games');
+  $urlRouterProvider.otherwise('/games/');
 });

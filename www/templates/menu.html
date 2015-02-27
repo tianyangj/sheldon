@@ -21,16 +21,20 @@
         <ion-item nav-clear menu-close ng-click="login()">
           Login
         </ion-item>
-        <ion-item nav-clear menu-close ui-sref="app.games">
-          Games
-        </ion-item>
-        <ion-item nav-clear menu-close ui-sref="app.movies">
-          Movies
-        </ion-item>
-        <ion-item nav-clear menu-close ui-sref="app.store">
-          Store
-        </ion-item>
       </ion-list>
+      <div class="list">
+        <div ng-repeat="vertical in verticals">
+          <div class="item item-stable item-icon-left" ng-click="toggleVertical(vertical)" ng-class="{active: isVerticalShown(vertical)}">
+            <i class="icon" ng-class="isVerticalShown(vertical) ? 'ion-ios7-arrow-down' : 'ion-ios7-arrow-right'"></i>
+            {{vertical.name}}
+          </div>
+          <a class="item item-accordion item-icon-left item-icon-right" ng-repeat="platform in vertical.platforms" ng-show="isVerticalShown(vertical)" nav-clear menu-close ng-href="{{platform.url}}">
+            <i class="icon"></i>
+            {{platform.name}}
+            <i class="icon ion-ios7-arrow-forward"></i>
+          </a>
+        </div>
+      </div>
     </ion-content>
   </ion-side-menu>
 </ion-side-menus>

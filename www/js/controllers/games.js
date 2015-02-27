@@ -2,6 +2,6 @@
 
 angular.module('GameFly')
 
-.controller('gamesController', function($scope) {
-  console.log('gamesController', $scope);
+.controller('gamesController', function($scope, $stateParams) {
+  console.log('gamesController', $scope, $stateParams);
 });

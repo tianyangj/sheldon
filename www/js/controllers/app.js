@@ -2,7 +2,7 @@
 
 angular.module('GameFly')
 
-.controller('appController', function($scope, $ionicModal, $timeout) {
+.controller('appController', function($scope, $ionicModal, $timeout, navigationService) {
   // Form data for the login modal
   $scope.loginData = {};
 
@@ -33,4 +33,19 @@ angular.module('GameFly')
       $scope.closeLogin();
     }, 1000);
   };
+
+  $scope.verticals = navigationService.get();
+
+  $scope.toggleVertical = function(vertical) {
+    if ($scope.isVerticalShown(vertical)) {
+      $scope.shownVertical = null;
+    } else {
+      $scope.shownVertical = vertical;
+    }
+  };
+  
+  $scope.isVerticalShown = function(vertical) {
+    return $scope.shownVertical === vertical;
+  };
+
 });
