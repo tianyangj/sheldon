@@ -14,21 +14,21 @@
 
   <ion-side-menu side="left">
     <ion-header-bar class="bar-dark">
-      <h1 class="title">Left</h1>
+      <h1 class="title">GameFly</h1>
     </ion-header-bar>
     <ion-content>
       <ion-list>
         <ion-item nav-clear menu-close ng-click="login()">
           Login
         </ion-item>
-        <ion-item nav-clear menu-close href="#/app/search">
-          Search
+        <ion-item nav-clear menu-close ui-sref="app.games">
+          Games
         </ion-item>
-        <ion-item nav-clear menu-close href="#/app/browse">
-          Browse
+        <ion-item nav-clear menu-close ui-sref="app.movies">
+          Movies
         </ion-item>
-        <ion-item nav-clear menu-close href="#/app/playlists">
-          Playlists
+        <ion-item nav-clear menu-close ui-sref="app.store">
+          Store
         </ion-item>
       </ion-list>
     </ion-content>

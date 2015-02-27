@@ -1,10 +1,6 @@
-// Ionic Starter App
+'use strict';
 
-// angular.module is a global place for creating, registering and retrieving Angular modules
-// 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
-// the 2nd parameter is an array of 'requires'
-// 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers'])
+angular.module('GameFly', ['ionic'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -24,48 +20,38 @@ angular.module('starter', ['ionic', 'starter.controllers'])
   $stateProvider
 
   .state('app', {
-    url: "/app",
+    url: '',
     abstract: true,
-    templateUrl: "templates/menu.html",
+    templateUrl: 'templates/menu.html',
     controller: 'AppCtrl'
   })
 
-  .state('app.search', {
-    url: "/search",
+  .state('app.games', {
+    url: '/games',
     views: {
       'menuContent': {
-        templateUrl: "templates/search.html"
+        templateUrl: 'templates/games.html'
       }
     }
   })
 
-  .state('app.browse', {
-    url: "/browse",
+  .state('app.movies', {
+    url: '/movies',
     views: {
       'menuContent': {
-        templateUrl: "templates/browse.html"
+        templateUrl: 'templates/movies.html'
       }
     }
   })
-    .state('app.playlists', {
-      url: "/playlists",
-      views: {
-        'menuContent': {
-          templateUrl: "templates/playlists.html",
-          controller: 'PlaylistsCtrl'
-        }
-      }
-    })
 
-  .state('app.single', {
-    url: "/playlists/:playlistId",
+  .state('app.store', {
+    url: '/store',
     views: {
       'menuContent': {
-        templateUrl: "templates/playlist.html",
-        controller: 'PlaylistCtrl'
+        templateUrl: 'templates/store.html'
       }
     }
   });
-  // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/playlists');
+
+  $urlRouterProvider.otherwise('/games');
 });
