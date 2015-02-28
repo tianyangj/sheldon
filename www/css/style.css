@@ -12,3 +12,11 @@
 .list .item.item-accordion.ng-hide-remove {
   display: block !important;
 }
+
+.hero-unit {
+  height: 200px;
+}
+.hero-unit .layer {
+  height: 100%;
+  background-size: cover;
+}

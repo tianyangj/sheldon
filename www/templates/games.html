@@ -1,5 +1,31 @@
 <ion-view view-title="Games">
   <ion-content>
-    <h1>Games</h1>
+    <ul rn-carousel class="hero-unit">
+  		<li ng-repeat="hero in merchandising.heroes">
+    		<div class="layer" ng-style="{'background-image':'url({{hero.viewports[3].image.rendered.url}})'}"></div>
+  		</li>
+		</ul>
+		<div class="list">
+			<div class="item item-divider">
+    		Featured
+  		</div>
+  		<ion-scroll direction="x">
+  			<div class="row row-bottom">
+	  			<div class="col col-33" ng-repeat="featured in merchandising.featureds">
+	  				<img class="full-image" ng-src="{{featured.product.thumbnailImage}}" />
+	  			</div>
+	  		</div>
+  		</ion-scroll>
+  		<div class="item item-divider">
+    		Most Popular
+  		</div>
+  		<ion-scroll direction="x">
+  			<div class="row row-bottom">
+	  			<div class="col col-33" ng-repeat="featured in merchandising.featureds">
+	  				<img class="full-image" ng-src="{{featured.product.thumbnailImage}}" />
+	  			</div>
+	  		</div>
+  		</ion-scroll>
+  	</div>
   </ion-content>
 </ion-view>
