@@ -1,0 +1,96 @@
+<ion-view view-title="{{product.title}}">
+  <ion-content>
+    <div class="hero-unit">
+      <div class="layer opacity" ng-attr-style="{'background-image':'url('+hero.viewports[3].image.rendered.url+')'}"></div>
+      <!--<video class="layer" ng-attr-poster="{{hero.viewports[3].video.rendered.url}}" autoplay controls>
+        <source ng-src="{{hero.viewports[3].video.displays[1].file}}">
+      </video>-->
+      <div class="info row">
+        <div class="col col-25">
+          <img class="full-image" ng-src="{{product.frontImage}}" />
+        </div>
+        <div class="col col-75">
+          <h1>{{product.title}}</h1>
+          <p>{{product.platform.name}}</p>
+          <p>{{product.genre.name}}</p>
+          <p>Availability</p>
+        </div>
+      </div>
+    </div>
+    <div class="list">
+
+      <div class="item item-divider">
+        Details
+      </div>
+      <div class="item item-text-wrap">
+        <table>
+          <tr>
+            <td>Release Date: </td>
+            <td>{{product.releaseDate.date | date}}</td>
+          </tr>
+          <tr>
+            <td>Publisher: </td>
+            <td>{{product.publisher}}</td>
+          </tr>
+          <tr>
+            <td>ESRB Rating: </td>
+            <td>{{product.contentRating.descriptors}}</td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="item item-divider">
+        Description
+      </div>
+      <div class="item item-text-wrap">
+        {{product.description}}
+      </div>
+
+      <div class="item item-divider">
+        Images ({{images.totalItems}})
+      </div>
+      <ion-scroll direction="x">
+        <div class="row row-bottom">
+          <div class="col col-66" ng-repeat="image in images.items">
+            <img class="full-image" ng-src="{{image.item.sources[3].url}}" />
+          </div>
+        </div>
+      </ion-scroll>
+
+      <div class="item item-divider">
+        Videos ({{videos.totalItems}})
+      </div>
+      <ion-scroll direction="x">
+        <div class="row row-bottom">
+          <div class="col col-66" ng-repeat="video in videos.items">
+            <img class="full-image" ng-src="{{video.item.previewUrl}}" />
+          </div>
+        </div>
+      </ion-scroll>
+
+      <div class="item item-divider">
+        Specs &amp; Requirements
+      </div>
+      <div class="item item-text-wrap">
+        <table>
+          <tr ng-repeat="spec in product.techSpecs">
+            <td>{{spec.name}}: </td>
+            <td>{{spec.value}}</td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="item item-divider">
+        Users Also Played
+      </div>
+      <ion-scroll direction="x">
+        <div class="row row-bottom">
+          <div class="col col-33" ng-repeat="recommendation in recommendations" ui-sref="app.product({productId:recommendation.id,product:recommendation})">
+            <img class="full-image" ng-src="{{recommendation.thumbnailImage}}" />
+          </div>
+        </div>
+      </ion-scroll>
+
+    </div>
+  </ion-content>
+</ion-view>

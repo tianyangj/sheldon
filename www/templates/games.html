@@ -11,7 +11,7 @@
   		</div>
   		<ion-scroll direction="x">
   			<div class="row row-bottom">
-	  			<div class="col col-33" ng-repeat="featured in merchandising.featureds">
+	  			<div class="col col-33" ng-repeat="featured in merchandising.featureds" ui-sref="app.product({productId:featured.product.id,product:featured.product})">
 	  				<img class="full-image" ng-src="{{featured.product.thumbnailImage}}" />
 	  			</div>
 	  		</div>

@@ -16,7 +16,10 @@ angular.module('GameFly', ['ionic', 'angular-carousel'])
   });
 })
 
-.config(function($stateProvider, $urlRouterProvider) {
+.config(function($stateProvider, $urlRouterProvider, $sceProvider) {
+
+  $sceProvider.enabled(false);
+  
   $stateProvider
 
   .state('app', {
@@ -32,6 +35,19 @@ angular.module('GameFly', ['ionic', 'angular-carousel'])
       'menuContent': {
         templateUrl: 'templates/games.html',
         controller: 'gamesController'
+      }
+    }
+  })
+
+  .state('app.product', {
+    url: '/product/:productId',
+    params: {
+      product: { value: null }
+    },
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/product.html',
+        controller: 'productController'
       }
     }
   })
