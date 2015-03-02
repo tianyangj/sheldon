@@ -19,15 +19,17 @@
 
   <ion-side-menu side="left">
     <ion-header-bar class="bar-dark">
-      <h1 class="title">GameFly</h1>
+      <h1 class="title" ng-if="!account">GameFly</h1>
+      <h1 class="title" ng-if="account">Hi, {{account.firstName}}</h1>
     </ion-header-bar>
     <ion-content>
-      <ion-list>
-        <ion-item nav-clear menu-close ng-click="login()">
-          Login
-        </ion-item>
-      </ion-list>
       <div class="list">
+        <div class="item item-icon-left">
+          <i class="icon ion-bag"></i>
+          Cart
+          <span class="badge badge-assertive">{{cartItemsCount}}</span>
+        </div>
+
         <div ng-repeat="vertical in verticals">
           <div class="item item-stable item-icon-left" ng-click="toggleVertical(vertical)" ng-class="{active: isVerticalShown(vertical)}">
             <i class="icon" ng-class="isVerticalShown(vertical) ? 'ion-ios7-arrow-down' : 'ion-ios7-arrow-right'"></i>
@@ -38,6 +40,15 @@
             {{platform.name}}
             <i class="icon ion-ios7-arrow-forward"></i>
           </a>
+        </div>
+
+        <div class="item">
+          <button class="button button-block button-royal" menu-close ng-click="showLoginModal()" ng-if="!account">
+            Login
+          </button>
+          <button class="button button-block button-positive" menu-close ng-click="logout()" ng-if="account">
+            Logout
+          </button>
         </div>
       </div>
     </ion-content>

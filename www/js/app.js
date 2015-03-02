@@ -16,7 +16,20 @@ angular.module('GameFly', ['ionic', 'angular-carousel'])
   });
 })
 
-.config(function($stateProvider, $urlRouterProvider, $sceProvider) {
+.config(function($stateProvider, $urlRouterProvider, $httpProvider, $sceProvider) {
+
+  $httpProvider.interceptors.push(function() {
+    return {
+      request: function(config) {
+        if (config.method === 'POST') {
+          // https://developer.mozilla.org/en-US/docs/Web/API/Document/cookie
+          var token = decodeURIComponent(document.cookie.replace(new RegExp("(?:(?:^|.*;)\\s*" + encodeURIComponent('XSRF-TOKEN').replace(/[\-\.\+\*]/g, "\\$&") + "\\s*\\=\\s*([^;]*).*$)|^.*$"), "$1")) || null;
+          config.headers['X-XSRF-TOKEN'] = token;
+        }
+        return config;
+      }
+    };
+  });
 
   $sceProvider.enabled(false);
   
@@ -26,7 +39,12 @@ angular.module('GameFly', ['ionic', 'angular-carousel'])
     url: '',
     abstract: true,
     templateUrl: 'templates/menu.html',
-    controller: 'appController'
+    controller: 'appController',
+    resolve: {
+      appModel: function(accountService) {
+        return accountService.getCurrent();
+      }
+    }
   })
 
   .state('app.games', {
