@@ -1,0 +1,24 @@
+<ion-view view-title="Queue">
+  <ion-nav-buttons side="right">
+  	<button class="button button-clear" ng-click="enableDelete()">Edit</button>
+    <button class="button button-clear" ng-click="enableReorder()">Reorder</button>
+  </ion-nav-buttons>
+  <ion-content>
+    <ion-list show-delete="isDelete" show-reorder="isReorder">
+			<ion-item class="item-avatar" ng-repeat="item in itemsQueued" ui-sref="app.product({productId:item.id,product:item})">
+    		<ion-delete-button class="ion-minus-circled" ng-click="delete(item)">
+				</ion-delete-button>
+				<img ng-src="{{item.thumbnailImage}}" />
+ 				<h3>{{item.title}}</h3>
+ 				<p>Availability</p>
+ 				<ion-option-button class="button-assertive" ng-click="delete(item)">
+      		Delete
+     		</ion-option-button>
+    		<ion-option-button class="button-calm">
+      		Share
+       	</ion-option-button>
+   			<ion-reorder-button class="ion-navicon" on-reorder="reorder(item, $fromIndex, $toIndex)"></ion-reorder-button>
+ 			</ion-item>
+		</ion-list>
+  </ion-content>
+</ion-view>

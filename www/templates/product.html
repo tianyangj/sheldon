@@ -1,4 +1,9 @@
 <ion-view view-title="{{product.title}}">
+  <ion-nav-buttons side="right">
+    <button class="button button-clear" ng-click="rent(product)">
+      Rent
+    </button>
+  </ion-nav-buttons>
   <ion-content>
     <div class="hero-unit">
       <div class="layer opacity" ng-attr-style="{'background-image':'url('+hero.viewports[3].image.rendered.url+')'}"></div>
@@ -39,57 +44,66 @@
         </table>
       </div>
 
-      <div class="item item-divider">
-        Description
-      </div>
-      <div class="item item-text-wrap">
-        {{product.description}}
-      </div>
-
-      <div class="item item-divider">
-        Images ({{images.totalItems}})
-      </div>
-      <ion-scroll direction="x">
-        <div class="row row-bottom">
-          <div class="col col-66" ng-repeat="image in images.items">
-            <img class="full-image" ng-src="{{image.item.sources[3].url}}" />
-          </div>
+      <div ng-if="product.description">
+        <div class="item item-divider">
+          Description
         </div>
-      </ion-scroll>
-
-      <div class="item item-divider">
-        Videos ({{videos.totalItems}})
-      </div>
-      <ion-scroll direction="x">
-        <div class="row row-bottom">
-          <div class="col col-66" ng-repeat="video in videos.items">
-            <img class="full-image" ng-src="{{video.item.previewUrl}}" />
-          </div>
+        <div class="item item-text-wrap" ng-bind-html="product.description">
         </div>
-      </ion-scroll>
-
-      <div class="item item-divider">
-        Specs &amp; Requirements
-      </div>
-      <div class="item item-text-wrap">
-        <table>
-          <tr ng-repeat="spec in product.techSpecs">
-            <td>{{spec.name}}: </td>
-            <td>{{spec.value}}</td>
-          </tr>
-        </table>
       </div>
 
-      <div class="item item-divider">
-        Users Also Played
-      </div>
-      <ion-scroll direction="x">
-        <div class="row row-bottom">
-          <div class="col col-33" ng-repeat="recommendation in recommendations" ui-sref="app.product({productId:recommendation.id,product:recommendation})">
-            <img class="full-image" ng-src="{{recommendation.thumbnailImage}}" />
-          </div>
+      <div ng-if="images.items.length">
+        <div class="item item-divider">
+          Images ({{images.totalItems}})
         </div>
-      </ion-scroll>
+        <ion-scroll direction="x">
+          <div class="row row-bottom">
+            <div class="col col-66" ng-repeat="image in images.items">
+              <img class="full-image" ng-src="{{image.item.sources[3].url}}" />
+            </div>
+          </div>
+        </ion-scroll>
+      </div>
+
+      <div ng-if="videos.items.length">
+        <div class="item item-divider">
+          Videos ({{videos.totalItems}})
+        </div>
+        <ion-scroll direction="x">
+          <div class="row row-bottom">
+            <div class="col col-66" ng-repeat="video in videos.items">
+              <img class="full-image" ng-src="{{video.item.previewUrl}}" />
+            </div>
+          </div>
+        </ion-scroll>
+      </div>
+
+      <div ng-if="product.techSpecs.length">
+        <div class="item item-divider">
+          Specs &amp; Requirements
+        </div>
+        <div class="item item-text-wrap">
+          <table>
+            <tr ng-repeat="spec in product.techSpecs">
+              <td>{{spec.name}}: </td>
+              <td>{{spec.value}}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+      <div ng-if="recommendations.length">
+        <div class="item item-divider">
+          Users Also Played
+        </div>
+        <ion-scroll direction="x">
+          <div class="row row-bottom">
+            <div class="col col-33" ng-repeat="recommendation in recommendations" ui-sref="app.product({productId:recommendation.id,product:recommendation})">
+              <img class="full-image" ng-src="{{recommendation.thumbnailImage}}" />
+            </div>
+          </div>
+        </ion-scroll>
+      </div>
 
     </div>
   </ion-content>

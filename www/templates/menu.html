@@ -24,6 +24,11 @@
     </ion-header-bar>
     <ion-content>
       <div class="list">
+        <div class="item item-icon-left" ng-if="account" menu-close ui-sref="app.queue">
+          <i class="icon ion-grid"></i>
+          Queue
+        </div>
+
         <div class="item item-icon-left">
           <i class="icon ion-bag"></i>
           Cart
