@@ -2,7 +2,7 @@
 
 angular.module('GameFly')
 
-.factory('cartService', function($http) {
+.factory('cartService', function($http, $rootScope) {
 
   function normalize(data) {
     var primary = _(data.cart.cartGroups).find(function(group) {
@@ -11,6 +11,8 @@ angular.module('GameFly')
     var secondary = _(data.cart.cartGroups).find(function(group) {
       return group.itemGroupType === 1;
     });
+    // update rootScope cart count
+    $rootScope.cartItemsCount = primary.lineItems.length;
     return {
       primary: primary,
       secondary: secondary,
