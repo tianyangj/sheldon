@@ -97,6 +97,16 @@ angular.module('GameFly', ['ionic', 'angular-carousel'])
         controller: 'queueController'
       }
     }
+  })
+
+  .state('app.cart', {
+    url: '/cart',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/cart.html',
+        controller: 'cartController'
+      }
+    }
   });
 
   $urlRouterProvider.otherwise('/games/');
