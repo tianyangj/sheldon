@@ -107,6 +107,16 @@ angular.module('GameFly', ['ionic', 'angular-carousel'])
         controller: 'cartController'
       }
     }
+  })
+
+  .state('app.signup', {
+    url: '/signup',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/signup.html',
+        controller: 'signupController'
+      }
+    }
   });
 
   $urlRouterProvider.otherwise('/games/');

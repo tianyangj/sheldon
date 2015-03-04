@@ -2,7 +2,7 @@
 
 angular.module('GameFly')
 
-.controller('loginController', function($scope, accountService, loginModal) {
+.controller('loginController', function($scope, $state, $ionicHistory, accountService, loginModal) {
 
   $scope.loginData = {};
 
@@ -17,4 +17,13 @@ angular.module('GameFly')
       $scope.error = response.data.failureError;
     });
   };
+
+  $scope.signup = function() {
+    loginModal.hide();
+    $ionicHistory.nextViewOptions({
+      disableAnimate: true,
+      disableBack: true
+    });
+    $state.go('app.signup');
+  }
 });
