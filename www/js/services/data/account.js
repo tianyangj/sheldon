@@ -41,9 +41,30 @@ angular.module('GameFly')
     });
   };
 
+  var createAccount = function(account) {
+    return $http({
+      method: 'POST',
+      url: 'https://api.gamefly.com/api/accountRegistration/createAccount',
+      data: account
+    });
+  };
+
+  var addShippingAddress = function(address) {
+    return $http({
+      method: 'POST',
+      url: 'https://api.gamefly.com/api/accountRegistration/addPrimaryShippingAddress',
+      data: {
+        address: address,
+        useAddressAsIs: false
+      }
+    });
+  }
+
   return {
     login: login,
     logout: logout,
-    getCurrent: getCurrent
+    getCurrent: getCurrent,
+    createAccount: createAccount,
+    addShippingAddress: addShippingAddress
   };
 });
