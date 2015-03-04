@@ -49,10 +49,38 @@ angular.module('GameFly', ['ionic', 'angular-carousel'])
 
   .state('app.games', {
     url: '/games/:platform',
+    params: {
+      platform: { value: null, squash: true }
+    },
     views: {
       'menuContent': {
         templateUrl: 'templates/games.html',
         controller: 'gamesController'
+      }
+    }
+  })
+
+  .state('app.movies', {
+    url: '/movies/:platform',
+    params: {
+      platform: { value: null, squash: true }
+    },
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/movies.html',
+        controller: 'moviesController'
+      }
+    }
+  })
+
+  .state('app.store', {
+    url: '/store/:platform',
+    params: {
+      platform: { value: null, squash: true }
+    },
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/store.html'
       }
     }
   })
@@ -66,25 +94,6 @@ angular.module('GameFly', ['ionic', 'angular-carousel'])
       'menuContent': {
         templateUrl: 'templates/product.html',
         controller: 'productController'
-      }
-    }
-  })
-
-  .state('app.movies', {
-    url: '/movies/:platform',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/movies.html',
-        controller: 'moviesController'
-      }
-    }
-  })
-
-  .state('app.store', {
-    url: '/store/:platform',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/store.html'
       }
     }
   })
@@ -119,5 +128,5 @@ angular.module('GameFly', ['ionic', 'angular-carousel'])
     }
   });
 
-  $urlRouterProvider.otherwise('/games/');
+  $urlRouterProvider.otherwise('/games');
 });
