@@ -2,12 +2,12 @@
 
 angular.module('GameFly')
 
-.factory('accountService', function($http, $rootScope) {
+.factory('accountService', function($http, $rootScope, appConfig) {
 
   var getCurrent = function() {
     return $http({
       method: 'GET',
-      url: 'https://api.gamefly.com/api/account/getcurrent'
+      url: appConfig.getApiUrl('/account/getcurrent')
     }).then(function(response) {
       $rootScope.account = response.data.account;
       $rootScope.cartItemsCount = response.data.itemsInCartCount;
@@ -18,7 +18,7 @@ angular.module('GameFly')
   var login = function(email, password) {
     return $http({
       method: 'POST',
-      url: 'https://api.gamefly.com/api/account/login',
+      url: appConfig.getApiUrl('/account/login'),
       data: {
         email: email,
         password: password
@@ -33,7 +33,7 @@ angular.module('GameFly')
   var logout = function() {
     return $http({
       method: 'POST',
-      url: 'https://api.gamefly.com/api/account/logout'
+      url: appConfig.getApiUrl('/account/logout')
     }).then(function(response) {
       $rootScope.account = null;
       $rootScope.cartItemsCount = 0;
@@ -44,7 +44,7 @@ angular.module('GameFly')
   var createAccount = function(account) {
     return $http({
       method: 'POST',
-      url: 'https://api.gamefly.com/api/accountRegistration/createAccount',
+      url: appConfig.getApiUrl('/accountRegistration/createAccount'),
       data: account
     });
   };
@@ -52,7 +52,7 @@ angular.module('GameFly')
   var addShippingAddress = function(address) {
     return $http({
       method: 'POST',
-      url: 'https://api.gamefly.com/api/accountRegistration/addPrimaryShippingAddress',
+      url: appConfig.getApiUrl('/accountRegistration/addPrimaryShippingAddress'),
       data: {
         address: address,
         useAddressAsIs: false

@@ -2,12 +2,12 @@
 
 angular.module('GameFly')
 
-.factory('dropdownService', function($http, $q) {
+.factory('dropdownService', function($http, $q, appConfig) {
 
   var getHowYouHear = function() {
     return $http({
       method: 'GET',
-      url: '//api.gamefly.com/api/accountregistration/gethowdidyouhearanswers'
+      url: appConfig.getApiUrl('/accountregistration/gethowdidyouhearanswers')
     }).then(function(response) {
       return response.data;
     });

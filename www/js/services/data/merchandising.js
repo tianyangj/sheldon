@@ -2,12 +2,12 @@
 
 angular.module('GameFly')
 
-.factory('merchandisingService', function($http) {
+.factory('merchandisingService', function($http, appConfig) {
 
   var get = function(platforms) {
     return $http({
       method: 'GET',
-      url: '//api.gamefly.com/api/merchandising/getdisplays',
+      url: appConfig.getApiUrl('/merchandising/getdisplays'),
       params: {
         ids: 'games'
       }

@@ -18,6 +18,8 @@ angular.module('GameFly', ['ionic', 'angular-carousel'])
 
 .config(function($stateProvider, $urlRouterProvider, $httpProvider, $sceProvider) {
 
+  $httpProvider.defaults.withCredentials = true;
+
   $httpProvider.interceptors.push(function() {
     return {
       request: function(config) {

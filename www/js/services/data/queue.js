@@ -2,12 +2,12 @@
 
 angular.module('GameFly')
 
-.factory('queueService', function($http) {
+.factory('queueService', function($http, appConfig) {
 
   var get = function() {
     return $http({
       method: 'GET',
-      url: '//api.gamefly.com/api/rentalqueue/get'
+      url: appConfig.getApiUrl('/rentalqueue/get')
     }).then(function(response) {
       return response.data;
     });
@@ -16,7 +16,7 @@ angular.module('GameFly')
   var modify = function(productIds) {
     return $http({
       method: 'POST',
-      url: '//api.gamefly.com/api/rentalqueue/modify',
+      url: appConfig.getApiUrl('/rentalqueue/modify'),
       data: productIds
     });
   };
@@ -24,7 +24,7 @@ angular.module('GameFly')
   var add = function(productId) {
     return $http({
       method: 'POST',
-      url: '//api.gamefly.com/api/rentalqueue/add',
+      url: appConfig.getApiUrl('/rentalqueue/add'),
       data: {
         productId: productId
       }

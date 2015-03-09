@@ -2,7 +2,7 @@
 
 angular.module('GameFly')
 
-.factory('cartService', function($http, $rootScope) {
+.factory('cartService', function($http, $rootScope, appConfig) {
 
   function normalize(data) {
     var primary = _(data.cart.cartGroups).find(function(group) {
@@ -24,7 +24,7 @@ angular.module('GameFly')
   var get = function() {
     return $http({
       method: 'GET',
-      url: '//api.gamefly.com/api/cart/get'
+      url: appConfig.getApiUrl('/cart/get')
     }).then(function(response) {
       return normalize(response.data);
     });
@@ -33,7 +33,7 @@ angular.module('GameFly')
   var update = function(lineItemId, quantity) {
     return $http({
       method: 'POST',
-      url: '//api.gamefly.com/api/cart/update',
+      url: appConfig.getApiUrl('/cart/update'),
       data: {
         changeQuantityItems: [
           {
@@ -50,7 +50,7 @@ angular.module('GameFly')
   var move = function(lineItemId, toGroup) {
     return $http({
       method: 'POST',
-      url: '//api.gamefly.com/api/cart/update',
+      url: appConfig.getApiUrl('/cart/update'),
       data: {
         moveItems: [
           {

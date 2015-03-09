@@ -19,49 +19,63 @@ app.use(cookieParser())
 
 // http://enable-cors.org/server_expressjs.html
 app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  res.header("Access-Control-Expose-Headers", "X-Powered-By");
+  res.header('Access-Control-Allow-Origin', 'http://localhost:8100');
+  res.header('Access-Control-Allow-Credentials', true);
+  res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, X-XSRF-TOKEN, X-AUTH-TOKEN');
+  res.header('Access-Control-Expose-Headers', 'X-XSRF-TOKEN, X-AUTH-TOKEN');
   next();
 });
 
 proxy.on('proxyReq', function(proxyReq, req, res, options) {
   console.log('proxyReq');
-  var temp = proxyReq.getHeader('Cookie');
-  console.log(temp)
-  temp += '; flyauth=198A80BEE0FC3A31A8B41A6809F59ADFBDB654A30BC6936A7BCE0CC6C83459013B4510D84D1004A22D05728B5C6FCB22DDCA4570137F7D7D8C2A61C3AD1D67BC888A2FB2B1C57922E3EF353FB4B371D3CAF6B993A5436E001DF06795952414CC3D0438E453CD5EE08480B82A8F4D5E3689B2B449A78E2F2EA920E599BB0E1A4E60BB1404'
-  temp += '; XSRF-TOKEN=l9BubR1B5c9d60lTuCuO0bQAwrxU1iJXZYsVgaV1YwH7zHUIejabkb4oN28YNIGUKtL_ZlubQN4VL6azJXTGwqCMgx41MwRXH8-sKdpoRBTitoss3gmGoRFp7YhNb6J4m69jag2:EgRgONKCSPRUvTkSXWwyxe5ZBx54cnFHkChYgguP1-S4ffbEAAw_0JRYt5Hnx527qmsaFLQKocKQspuuZe8cHAIKcaWL9c4LkvfzvIaDfV1sbZt2kuVb-4asP0GFmTntuU-qxb_5JJ2qgRGXV-30SLWiosM1'
-  console.log(temp)
-  proxyReq.setHeader('Cookie', temp);
-  console.log(req.cookies)
+  var auth = proxyReq.getHeader('X-AUTH-TOKEN');
+  var xsrf = proxyReq.getHeader('X-XSRF-TOKEN');
+  var cookies = 'sessionInit=True;';
+  if (auth) {
+    cookies += 'flyauth=' + auth + ';';
+  }
+  if (xsrf) {
+    cookies += 'XSRF-TOKEN=' + xsrf + ';';
+  }
+  proxyReq.setHeader('Cookie', cookies);
+  console.log(proxyReq.getHeader('Cookie'))
 });
 
 proxy.on('proxyRes', function(proxyRes, req, res) {
-  console.log('proxyRes');
+  // get response cookies
   var cookies = proxyRes.headers['set-cookie'];
-  var xsrf = _(cookies).find(function(cookie) {
+  console.log('response cookies', cookies)
+  // find XSRF-TOKEN cookie
+  var xsrf = _(cookies).findLast(function(cookie) {
     return _(cookie).startsWith('XSRF-TOKEN=');
   });
+  // set header X-XSRF-TOKEN with cookie XSRF-TOKEN value
   if (xsrf) {
     xsrf = xsrf.substring('XSRF-TOKEN='.length, xsrf.indexOf(';'));
     proxyRes.headers['X-XSRF-TOKEN'] = xsrf;
   }
-  var flyauth = _(cookies).find(function(cookie) {
-    return _(cookie).startsWith('flyauth');
+  // find flyauth cookie
+  var flyauth = _(cookies).findLast(function(cookie) {
+    return _(cookie).startsWith('flyauth=');
   });
+  // set header X-AUTH-TOKEN with cookie flyauth value
   if (flyauth) {
-    flyauth = flyauth.substring('flyauth'.length, flyauth.indexOf(';'));
+    flyauth = flyauth.substring('flyauth='.length, flyauth.indexOf(';'));
     proxyRes.headers['X-AUTH-TOKEN'] = flyauth;
   }
-  res.cookie('another', 'to')
 });
 
 app.use('/api', function(req, res) {
-  proxy.web(req, res, {
-    target: 'https://api.gamefly.com/api',
-    changeOrigin: true
-  });
+  if (req.method === 'OPTIONS') {
+    res.end();
+  } else {
+    proxy.web(req, res, {
+      target: 'https://api.gamefly.com/api',
+      changeOrigin: true
+    });
+  }
 });
 
 app.listen(3000);
-console.log('Listening on port', 3000)
+console.log('Proxy listening on port', 3000);

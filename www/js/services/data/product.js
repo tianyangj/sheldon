@@ -2,12 +2,12 @@
 
 angular.module('GameFly')
 
-.factory('productService', function($http) {
+.factory('productService', function($http, appConfig) {
 
   var get = function(productId) {
     return $http({
       method: 'GET',
-      url: '//api.gamefly.com/api/product/get/' + productId
+      url: appConfig.getApiUrl('/product/get/' + productId)
     }).then(function(response) {
       console.log(response.data)
       return {
@@ -33,7 +33,7 @@ angular.module('GameFly')
   var getMedia = function(productId, type) {
     return $http({
       method: 'GET',
-      url: '//api.gamefly.com/api/product/getmedia',
+      url: appConfig.getApiUrl('/product/getmedia'),
       params: {
         pageIndex: 1,
         pageSize: 10,
