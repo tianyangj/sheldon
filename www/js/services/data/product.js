@@ -30,7 +30,7 @@ angular.module('GameFly')
     });
   };
 
-  var getMedia = function(productId, type) {
+  var getMedia = function(productId, mediaType) {
     return $http({
       method: 'GET',
       url: appConfig.getApiUrl('/product/getmedia'),
@@ -38,15 +38,27 @@ angular.module('GameFly')
         pageIndex: 1,
         pageSize: 10,
         productId: productId,
-        type: type
+        type: mediaType
       }
     }).then(function(response) {
       return response.data;
     });
   };
 
+  var query = function(params) {
+    return $http({
+      method: 'GET',
+      url: appConfig.getApiUrl('/productquery/findpage'),
+      params: params
+    }).then(function(response) {
+      console.log(response)
+      return response.data.products;
+    });
+  };
+
   return {
     get: get,
-    getMedia: getMedia
+    getMedia: getMedia,
+    query: query
   };
 });

@@ -7031,6 +7031,16 @@ a.button {
     .hero-unit .info h1 {
       font-size: 18px; }
 
+.col-thumbnail {
+  flex: 0 0 auto;
+  max-width: 110px; }
+
+.pull-right {
+  float: right; }
+
+.pull-left {
+  float: left; }
+
 .list .item.item-accordion {
   line-height: 38px;
   padding-top: 0;
