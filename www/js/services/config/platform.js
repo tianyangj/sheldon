@@ -37,4 +37,29 @@ angular.module('GameFly')
 		{ name: 'bluray', id: 1235, value: 'Blu-ray' },
 		{ name: 'dvd', id: 1230, value: 'DVD' }
 	]
+})
+
+.factory('platformConfig', function(platformConstants) {
+
+	return {
+		get: function(vertical, name, id) {
+			switch(vertical) {
+				case 'games':
+					return _(platformConstants.games).find(function(platform) {
+						if (name) return platform.name === name;
+						if (id) return platform.id === id;
+					});
+				case 'movies':
+					return _(platformConstants.movies).find(function(platform) {
+						if (name) return platform.name === name;
+						if (id) return platform.id === id;
+					});
+				case 'stores':
+					return _(platformConstants.stores).find(function(platform) {
+						if (name) return platform.name === name;
+						if (id) return platform.id === id;
+					});
+			}
+		}
+	};
 });
