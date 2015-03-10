@@ -51,7 +51,6 @@ angular.module('GameFly')
       url: appConfig.getApiUrl('/productquery/findpage'),
       params: params
     }).then(function(response) {
-      console.log(response)
       return response.data.products;
     });
   };

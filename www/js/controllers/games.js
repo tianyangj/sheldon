@@ -3,9 +3,11 @@
 angular.module('GameFly')
 
 .controller('gamesController', function($scope, $stateParams, merchandisingService, productService, platformConfig) {
-  console.log('gamesController', $stateParams, platformConfig.get('games', $stateParams.platform));
+  
+  var platform = platformConfig.get('games', $stateParams.platform);
+  console.log('gamesController', $stateParams, platform);
+
   merchandisingService.get().then(function(merchandising) {
-    console.log('data.success', merchandising);
     $scope.merchandising = merchandising;
   });
 
