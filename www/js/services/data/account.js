@@ -46,17 +46,33 @@ angular.module('GameFly')
       method: 'POST',
       url: appConfig.getApiUrl('/accountRegistration/createAccount'),
       data: account
+    }).then(function(response) {
+      $rootScope.account = response.data.account;
+      $rootScope.cartItemsCount = response.data.itemsInCartCount;
+      return response.data;
     });
   };
 
-  var addShippingAddress = function(address) {
+  var addShippingAddress = function(address, useAsIs) {
     return $http({
       method: 'POST',
       url: appConfig.getApiUrl('/accountRegistration/addPrimaryShippingAddress'),
       data: {
-        address: address,
-        useAddressAsIs: false
+        address: {
+          firstName: address.firstname,
+          lastName: address.lastname,
+          street: address.street,
+          city: address.city,
+          state: address.state.key,
+          postalCode: address.zip,
+          phoneNumber: address.phone
+        },
+        useAddressAsIs: useAsIs
       }
+    }).then(function(response) {
+      $rootScope.account = response.data.account;
+      $rootScope.cartItemsCount = response.data.itemsInCartCount || 0;
+      return response.data;
     });
   }
 
