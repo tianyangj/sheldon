@@ -1,4 +1,4 @@
-<ion-view view-title="Games">
+<ion-view view-title="{{platform.value || 'Games'}}">
   <ion-content>
     <ul rn-carousel class="hero-unit">
   		<li ng-repeat="hero in merchandising.heroes">
@@ -6,71 +6,83 @@
   		</li>
 		</ul>
 		<div class="list">
-			<div class="item item-divider">
-    		Featured
-  		</div>
-  		<ion-scroll direction="x">
-  			<div class="row row-bottom">
-	  			<div class="col col-thumbnail" ng-repeat="featured in merchandising.featureds" ui-sref="app.product({productId:featured.product.id,product:featured.product})">
-	  				<img class="full-image" ng-src="{{featured.product.thumbnailImage}}" />
-	  			</div>
-	  		</div>
-  		</ion-scroll>
-  		<div class="item item-divider">
-    		Most Popular
-        <a class="pull-right">View All</a>
-  		</div>
-  		<ion-scroll direction="x">
-  			<div class="row row-bottom">
-	  			<div class="col col-thumbnail" ng-repeat="item in mostpopular.items" ui-sref="app.product({productId:item.id,product:item})">
-	  				<img class="full-image" ng-src="{{item.thumbnailImage}}" />
-	  			</div>
-	  		</div>
-  		</ion-scroll>
-      <div class="item item-divider">
-        New Releases
-        <a class="pull-right">View All</a>
+      <div ng-if="merchandising.featureds.length">
+  			<div class="item item-divider">
+      		Featured
+    		</div>
+    		<ion-scroll direction="x">
+    			<div class="row row-bottom">
+  	  			<div class="col col-thumbnail" ng-repeat="featured in merchandising.featureds" ui-sref="app.product({productId:featured.product.id,product:featured.product})">
+  	  				<img class="full-image" ng-src="{{featured.product.thumbnailImage}}" />
+  	  			</div>
+  	  		</div>
+    		</ion-scroll>
       </div>
-      <ion-scroll direction="x">
-        <div class="row row-bottom">
-          <div class="col col-thumbnail" ng-repeat="item in newreleases.items" ui-sref="app.product({productId:item.id,product:item})">
-            <img class="full-image" ng-src="{{item.thumbnailImage}}" />
-          </div>
-        </div>
-      </ion-scroll>
-      <div class="item item-divider">
-        Coming Soon
-        <a class="pull-right">View All</a>
+      <div ng-if="mostpopular.items.length">
+    		<div class="item item-divider">
+      		Most Popular
+          <a class="pull-right">View All</a>
+    		</div>
+    		<ion-scroll direction="x">
+    			<div class="row row-bottom">
+  	  			<div class="col col-thumbnail" ng-repeat="item in mostpopular.items" ui-sref="app.product({productId:item.id,product:item})">
+  	  				<img class="full-image" ng-src="{{item.thumbnailImage}}" />
+  	  			</div>
+  	  		</div>
+    		</ion-scroll>
       </div>
-      <ion-scroll direction="x">
-        <div class="row row-bottom">
-          <div class="col col-thumbnail" ng-repeat="item in comingsoon.items" ui-sref="app.product({productId:item.id,product:item})">
-            <img class="full-image" ng-src="{{item.thumbnailImage}}" />
-          </div>
+      <div ng-if="newreleases.items.length">
+        <div class="item item-divider">
+          New Releases
+          <a class="pull-right">View All</a>
         </div>
-      </ion-scroll>
-      <div class="item item-divider">
-        Used Bestsellers
-        <a class="pull-right">View All</a>
+        <ion-scroll direction="x">
+          <div class="row row-bottom">
+            <div class="col col-thumbnail" ng-repeat="item in newreleases.items" ui-sref="app.product({productId:item.id,product:item})">
+              <img class="full-image" ng-src="{{item.thumbnailImage}}" />
+            </div>
+          </div>
+        </ion-scroll>
       </div>
-      <ion-scroll direction="x">
-        <div class="row row-bottom">
-          <div class="col col-thumbnail" ng-repeat="item in usedbestsellers.items" ui-sref="app.product({productId:item.id,product:item})">
-            <img class="full-image" ng-src="{{item.thumbnailImage}}" />
-          </div>
+      <div ng-if="comingsoon.items.length">
+        <div class="item item-divider">
+          Coming Soon
+          <a class="pull-right">View All</a>
         </div>
-      </ion-scroll>
-      <div class="item item-divider">
-        New Bestsellers
-        <a class="pull-right">View All</a>
+        <ion-scroll direction="x">
+          <div class="row row-bottom">
+            <div class="col col-thumbnail" ng-repeat="item in comingsoon.items" ui-sref="app.product({productId:item.id,product:item})">
+              <img class="full-image" ng-src="{{item.thumbnailImage}}" />
+            </div>
+          </div>
+        </ion-scroll>
       </div>
-      <ion-scroll direction="x">
-        <div class="row row-bottom">
-          <div class="col col-thumbnail" ng-repeat="item in newbestsellers.items" ui-sref="app.product({productId:item.id,product:item})">
-            <img class="full-image" ng-src="{{item.thumbnailImage}}" />
-          </div>
+      <div ng-if="usedbestsellers.items.length">
+        <div class="item item-divider">
+          Used Bestsellers
+          <a class="pull-right">View All</a>
         </div>
-      </ion-scroll>
+        <ion-scroll direction="x">
+          <div class="row row-bottom">
+            <div class="col col-thumbnail" ng-repeat="item in usedbestsellers.items" ui-sref="app.product({productId:item.id,product:item})">
+              <img class="full-image" ng-src="{{item.thumbnailImage}}" />
+            </div>
+          </div>
+        </ion-scroll>
+      </div>
+      <div ng-if="newbestsellers.items.length">
+        <div class="item item-divider">
+          New Bestsellers
+          <a class="pull-right">View All</a>
+        </div>
+        <ion-scroll direction="x">
+          <div class="row row-bottom">
+            <div class="col col-thumbnail" ng-repeat="item in newbestsellers.items" ui-sref="app.product({productId:item.id,product:item})">
+              <img class="full-image" ng-src="{{item.thumbnailImage}}" />
+            </div>
+          </div>
+        </ion-scroll>
+      </div>
   	</div>
   </ion-content>
 </ion-view>

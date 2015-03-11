@@ -4,17 +4,17 @@ angular.module('GameFly')
 
 .controller('gamesController', function($scope, $stateParams, merchandisingService, productService, platformConfig) {
   
-  var platform = platformConfig.get('games', $stateParams.platform);
+  $scope.platform = platformConfig.get('games', $stateParams.platform);
 
-  var platformIds = platform ? [platform.id] : [];
+  $scope.platformIds = $scope.platform ? [$scope.platform.id] : [];
 
-  merchandisingService.get('games', platformIds).then(function(merchandising) {
+  merchandisingService.get('games', $scope.platformIds).then(function(merchandising) {
     $scope.merchandising = merchandising;
   });
 
   productService.query({
   	mostpopular: true,
-    platforms: platform ? platformIds : null,
+    platforms: $scope.platformIds,
   	productType: 'ConsoleGame',
   	'sort.direction': 'desc',
   	'sort.field': 'mostpopular'
@@ -24,7 +24,7 @@ angular.module('GameFly')
 
   productService.query({
   	newreleases: true,
-    platforms: platform ? platformIds : null,
+    platforms: $scope.platformIds,
   	productType: 'ConsoleGame',
   	'sort.direction': 'desc',
   	'sort.field': 'releasedate'
@@ -34,7 +34,7 @@ angular.module('GameFly')
 
   productService.query({
   	comingsoon: true,
-    platforms: platform ? platformIds : null,
+    platforms: $scope.platformIds,
   	productType: 'ConsoleGame',
   	'sort.direction': 'asc',
   	'sort.field': 'releasedate'
@@ -46,7 +46,7 @@ angular.module('GameFly')
   	bestselling: true,
   	newOnly: false,
   	usedOnly: true,
-    platforms: platform ? platformIds : null,
+    platforms: $scope.platformIds,
   	productType: 'ConsoleGame',
   	'sort.direction': 'desc',
   	'sort.field': 'usedbestselling'
@@ -58,7 +58,7 @@ angular.module('GameFly')
   	bestselling: true,
   	newOnly: true,
   	usedOnly: false,
-    platforms: platform ? platformIds : null,
+    platforms: $scope.platformIds,
   	productType: 'ConsoleGame',
   	'sort.direction': 'desc',
   	'sort.field': 'newbestselling'
