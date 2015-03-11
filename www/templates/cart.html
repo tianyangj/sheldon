@@ -11,7 +11,7 @@
 				<img ng-src="{{item.product.thumbnailImage}}" ui-sref="app.product({productId:item.product.id,product:item.product})"/>
  				<h3>{{item.product.title}}</h3>
  				<p>{{item.estimatedShippingDate}}</p>
-        <p>{{item.product.platformId}}</p>
+        <p>{{item.product.platformId | gfPlatform}}</p>
         <p>{{item.price | gfPrice}}</p>
  				<ion-option-button class="button-assertive" ng-click="deletePrimary(item)">
       		Remove
@@ -30,7 +30,7 @@
         <img ng-src="{{item.product.thumbnailImage}}" ui-sref="app.product({productId:item.product.id,product:item.product})"/>
         <h3>{{item.product.title}}</h3>
         <p>{{item.estimatedShippingDate}}</p>
-        <p>{{item.product.platformId}}</p>
+        <p>{{item.product.platformId | gfPlatform}}</p>
         <p>{{item.price | gfPrice}}</p>
         <ion-option-button class="button-assertive" ng-click="deleteSecondary(item)">
           Remove
