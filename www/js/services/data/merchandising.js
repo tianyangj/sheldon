@@ -4,12 +4,22 @@ angular.module('GameFly')
 
 .factory('merchandisingService', function($http, appConfig) {
 
-  var get = function(platforms) {
+  var buildIds = function(vertical, platformIds) {
+    if (platformIds.length) {
+      return platformIds.map(function(platformId) {
+        return vertical + '.' + platformId;
+      });
+    } else {
+      return vertical;
+    }
+  };
+
+  var get = function(vertical, platformIds) {
     return $http({
       method: 'GET',
       url: appConfig.getApiUrl('/merchandising/getdisplays'),
       params: {
-        ids: 'games'
+        ids: buildIds(vertical, platformIds)
       }
     }).then(function(response) {
       var heroes = _(response.data.groups)
