@@ -82,7 +82,8 @@ angular.module('GameFly', ['ionic', 'angular-carousel'])
     },
     views: {
       'menuContent': {
-        templateUrl: 'templates/store.html'
+        templateUrl: 'templates/store.html',
+        controller: 'storeController'
       }
     }
   })
