@@ -8,7 +8,12 @@
 	<button class="button button-small button-block button-royal" ng-if="newOffer" ng-disabled="newOffer.isAlreadyInCart">
 		<span ng-if="newOffer.isAlreadyInCart">In Cart</span>
 		<span ng-if="!newOffer.isAlreadyInCart">
-			Buy New <gf-price list-price="newOffer.listPrice" purchase-price="newOffer.purchasePrice"></gf-price>
+			<span ng-if="newOffer.isPreorderOffer">
+				Pre-Order <gf-price list-price="newOffer.listPrice" purchase-price="newOffer.purchasePrice"></gf-price>
+			</span>
+			<span ng-if="!newOffer.isPreorderOffer">
+				Buy New <gf-price list-price="newOffer.listPrice" purchase-price="newOffer.purchasePrice"></gf-price>
+			</span>
 		</span>
 	</button>
 	<button class="button button-small button-block button-royal" ng-if="usedOffer" ng-disabled="usedOffer.isAlreadyInCart">
