@@ -1,0 +1,23 @@
+<div ng-if="offers">
+	<button class="button button-small button-block button-royal" ng-if="rentOffer && rentOffer.canRent && !rentOffer.isRented" ng-disabled="rentOffer.isAlreadyInQueue">
+		<span ng-if="rentOffer.isAlreadyInQueue">In Queue</span>
+		<span ng-if="!rentOffer.isAlreadyInQueue">
+			Rent <span>{{rentOffer.availability}}</span>
+		</span>
+	</button>
+	<button class="button button-small button-block button-royal" ng-if="newOffer" ng-disabled="newOffer.isAlreadyInCart">
+		<span ng-if="newOffer.isAlreadyInCart">In Cart</span>
+		<span ng-if="!newOffer.isAlreadyInCart">
+			Buy New <gf-price list-price="newOffer.listPrice" purchase-price="newOffer.purchasePrice"></gf-price>
+		</span>
+	</button>
+	<button class="button button-small button-block button-royal" ng-if="usedOffer" ng-disabled="usedOffer.isAlreadyInCart">
+		<span ng-if="usedOffer.isAlreadyInCart">In Cart</span>
+		<span ng-if="!usedOffer.isAlreadyInCart">
+			Buy Used <gf-price list-price="usedOffer.listPrice" purchase-price="usedOffer.purchasePrice"></gf-price>
+		</span>
+	</button>
+	<button class="button button-small button-block button-royal" ng-if="keepOffer && rentOffer && rentOffer.isRented">
+  	Keep <gf-price list-price="keepOffer.listPrice" purchase-price="keepOffer.purchasePrice"></gf-price>
+	</button>
+</div>
