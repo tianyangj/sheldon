@@ -1,0 +1,41 @@
+<ion-view view-title="Filter">
+  <ion-nav-buttons side="right">
+    <button class="button button-clear" ng-click="apply()">Apply</button>
+  </ion-nav-buttons>
+  <ion-content class="padding">
+    <div class="button-bar">
+      <a class="button" ng-class="{activated: vertical === 'games'}" ng-click="updateVertical('games')">Games</a>
+      <a class="button" ng-class="{activated: vertical === 'movies'}" ng-click="updateVertical('movies')">Movies</a>
+    </div>
+    <div class="list">
+      <label class="item item-input item-select">
+        <div class="input-label">
+          Platforms
+        </div>
+        <select ng-options="platform.value for platform in platforms track by platform.id" ng-model="filters.platform">
+          <option selected>All</option>
+        </select>
+      </label>
+      <label class="item item-input item-select">
+        <div class="input-label">
+          Genres
+        </div>
+        <select ng-options="genre.value for genre in genres track by genre.name" ng-model="filters.genre">
+          <option selected>All</option>
+        </select>
+      </label>
+      <label class="item item-input item-select">
+        <div class="input-label">
+          Ratings
+        </div>
+        <select ng-options="rating.value for rating in ratings track by rating.name" ng-model="filters.rating">
+          <option selected>All</option>
+        </select>
+      </label>
+      <div class="item range range-royal">
+        <i class="icon ion-social-usd-outline"></i>
+        <input type="range" name="volume" min="0" max="100" value="33">
+        <i class="icon ion-social-usd"></i>
+      </div>
+  </ion-content>
+</ion-view>

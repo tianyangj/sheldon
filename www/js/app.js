@@ -88,6 +88,16 @@ angular.module('GameFly', ['ionic', 'angular-carousel'])
     }
   })
 
+  .state('app.filter', {
+    url: '/filter?vertical&platform',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/filter.html',
+        controller: 'filterController'
+      }
+    }
+  })
+
   .state('app.product', {
     url: '/product/:productId',
     params: {
