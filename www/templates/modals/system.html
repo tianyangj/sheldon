@@ -7,6 +7,10 @@
   </ion-header-bar>
   <ion-content>
     <div class="list">
+      <a class="item item-icon-right" ng-click="updateSystem()">
+        All Systems
+        <i class="icon" ng-class="{'ion-checkmark': !platform}"></i>
+      </a>
       <a class="item item-icon-right" ng-repeat="system in systems" ng-click="updateSystem(system)">
         {{system.value}}
         <i class="icon" ng-class="{'ion-checkmark': system.value === platform.value}"></i>

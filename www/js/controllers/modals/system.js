@@ -15,7 +15,7 @@ angular.module('GameFly')
 			disableBack: true
 		});
 		$state.go('app.' + $scope.vertical, {
-			platform: system.name
+			platform: system ? system.name : null
 		});
 	};
 
