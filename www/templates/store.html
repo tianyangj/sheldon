@@ -8,11 +8,12 @@
       <div ng-if="merchandising.featureds.length">
   			<div class="item item-divider">
       		Featured
+          <a class="pull-right">See All &gt;</a>
     		</div>
     		<ion-scroll direction="x">
     			<div class="row row-bottom">
-  	  			<div class="col col-thumbnail" ng-repeat="featured in merchandising.featureds" ui-sref="app.product({productId:featured.product.id,product:featured.product})">
-  	  				<img class="full-image" ng-src="{{featured.product.thumbnailImage}}" />
+  	  			<div class="col col-thumbnail" ng-repeat="featured in merchandising.featureds">
+  	  				<gf-thumbnail product="featured.product"></gf-thumbnail>
   	  			</div>
   	  		</div>
     		</ion-scroll>
@@ -20,12 +21,12 @@
       <div ng-if="usedbestsellers.items.length">
         <div class="item item-divider">
           Used Bestsellers
-          <a class="pull-right">View All</a>
+          <a class="pull-right">See All &gt;</a>
         </div>
         <ion-scroll direction="x">
           <div class="row row-bottom">
-            <div class="col col-thumbnail" ng-repeat="item in usedbestsellers.items" ui-sref="app.product({productId:item.id,product:item})">
-              <img class="full-image" ng-src="{{item.thumbnailImage}}" />
+            <div class="col col-thumbnail" ng-repeat="item in usedbestsellers.items">
+              <gf-thumbnail product="item"></gf-thumbnail>
             </div>
           </div>
         </ion-scroll>
@@ -33,12 +34,12 @@
       <div ng-if="newbestsellers.items.length">
         <div class="item item-divider">
           New Bestsellers
-          <a class="pull-right">View All</a>
+          <a class="pull-right">See All &gt;</a>
         </div>
         <ion-scroll direction="x">
           <div class="row row-bottom">
-            <div class="col col-thumbnail" ng-repeat="item in newbestsellers.items" ui-sref="app.product({productId:item.id,product:item})">
-              <img class="full-image" ng-src="{{item.thumbnailImage}}" />
+            <div class="col col-thumbnail" ng-repeat="item in newbestsellers.items">
+              <gf-thumbnail product="item"></gf-thumbnail>
             </div>
           </div>
         </ion-scroll>
@@ -46,12 +47,12 @@
       <div ng-if="preorders.items.length">
         <div class="item item-divider">
           Pre-Orders
-          <a class="pull-right">View All</a>
+          <a class="pull-right">See All &gt;</a>
         </div>
         <ion-scroll direction="x">
           <div class="row row-bottom">
-            <div class="col col-thumbnail" ng-repeat="item in preorders.items" ui-sref="app.product({productId:item.id,product:item})">
-              <img class="full-image" ng-src="{{item.thumbnailImage}}" />
+            <div class="col col-thumbnail" ng-repeat="item in preorders.items">
+              <gf-thumbnail product="item"></gf-thumbnail>
             </div>
           </div>
         </ion-scroll>
@@ -59,12 +60,12 @@
       <div ng-if="freeshippings.items.length">
         <div class="item item-divider">
           Free Shipping
-          <a class="pull-right">View All</a>
+          <a class="pull-right">See All &gt;</a>
         </div>
         <ion-scroll direction="x">
           <div class="row row-bottom">
-            <div class="col col-thumbnail" ng-repeat="item in freeshippings.items" ui-sref="app.product({productId:item.id,product:item})">
-              <img class="full-image" ng-src="{{item.thumbnailImage}}" />
+            <div class="col col-thumbnail" ng-repeat="item in freeshippings.items">
+              <gf-thumbnail product="item"></gf-thumbnail>
             </div>
           </div>
         </ion-scroll>

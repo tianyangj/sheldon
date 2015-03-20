@@ -7051,6 +7051,18 @@ a.button {
 .pull-left {
   float: left; }
 
+.thumbnail .caption {
+  min-height: 80px; }
+  .thumbnail .caption h5 {
+    margin: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical; }
+  .thumbnail .caption p {
+    margin: 0; }
+
 .list .item.item-accordion {
   line-height: 38px;
   padding-top: 0;

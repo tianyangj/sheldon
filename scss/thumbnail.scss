@@ -10,3 +10,23 @@
 .pull-left {
 	float: left;
 }
+
+.thumbnail {
+	
+	.caption {
+		min-height: 80px;
+
+		h5 {
+			margin: 0;
+			overflow : hidden;
+  			text-overflow: ellipsis;
+  			display: -webkit-box;
+  			-webkit-line-clamp: 2;
+  			-webkit-box-orient: vertical;
+		}
+
+		p {
+			margin: 0;
+		}
+	}
+}
