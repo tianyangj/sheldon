@@ -1,6 +1,7 @@
 <ion-view view-title="{{platform.value || 'Games'}}">
   <ion-nav-buttons side="right">
     <button class="button button-clear" ui-sref="app.filter({vertical:'games',platform:platform.id})">Filter</button>
+    <button class="button button-clear" ng-click="showSystem()">Systems</button>
   </ion-nav-buttons>
   <ion-content>
     <ul rn-carousel class="hero-unit">
