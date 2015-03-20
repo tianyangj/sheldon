@@ -2,6 +2,20 @@
 	position: relative;
 	height: 200px;
 
+	ul[rn-carousel] {
+		height: 100%;
+	}
+
+	div[rn-carousel-indicators] {
+		position: absolute;
+  		bottom: 5%;
+  		left: 0;
+  		right: 0;
+  		text-align: center;
+  		font-size: 180%;
+  		letter-spacing: 5px;
+	}
+
 	.layer {
 		position: absolute;
 		width: 100%;

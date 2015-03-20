@@ -3,11 +3,7 @@
     <button class="button button-clear" ng-click="showSystem()">Systems</button>
   </ion-nav-buttons>
   <ion-content>
-    <ul rn-carousel class="hero-unit">
-  		<li ng-repeat="hero in merchandising.heroes">
-    		<div class="layer" ng-style="{'background-image':'url({{hero.viewports[3].image.rendered.url}})'}"></div>
-  		</li>
-		</ul>
+    <gf-hero heroes="merchandising.heroes"></gf-hero>
 		<div class="list">
       <div ng-if="merchandising.featureds.length">
   			<div class="item item-divider">

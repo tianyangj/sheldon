@@ -7018,6 +7018,16 @@ a.button {
 .hero-unit {
   position: relative;
   height: 200px; }
+  .hero-unit ul[rn-carousel] {
+    height: 100%; }
+  .hero-unit div[rn-carousel-indicators] {
+    position: absolute;
+    bottom: 5%;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: 180%;
+    letter-spacing: 5px; }
   .hero-unit .layer {
     position: absolute;
     width: 100%;
