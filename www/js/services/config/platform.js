@@ -54,7 +54,7 @@ angular.module('GameFly')
 						if (name) return platform.name === name;
 						if (id) return platform.id === id;
 					});
-				case 'stores':
+				case 'store':
 					return _(platformConstants.stores).find(function(platform) {
 						if (name) return platform.name === name;
 						if (id) return platform.id === id;

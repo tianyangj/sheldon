@@ -2,36 +2,38 @@
 
 angular.module('GameFly')
 
-.controller('storeController', function($scope, $stateParams, merchandisingService, productService, platformConfig) {
-  
-  $scope.platform = platformConfig.get('stores', $stateParams.platform);
+.controller('storeController', function($scope, $stateParams, modalService, merchandisingService, productService, platformConfig) {
+
+  $scope.vertical = 'store';
+
+  $scope.platform = platformConfig.get($scope.vertical, $stateParams.platform);
 
   $scope.platformIds = $scope.platform ? [$scope.platform.id] : [];
 
-  merchandisingService.get('store', $scope.platformIds).then(function(merchandising) {
+  merchandisingService.get($scope.vertical, $scope.platformIds).then(function(merchandising) {
     $scope.merchandising = merchandising;
   });
 
   productService.query({
-  	bestselling: true,
-  	newOnly: false,
-  	usedOnly: true,
+    bestselling: true,
+    newOnly: false,
+    usedOnly: true,
     platforms: $scope.platformIds,
-  	'sort.direction': 'desc',
-  	'sort.field': 'usedbestselling'
+    'sort.direction': 'desc',
+    'sort.field': 'usedbestselling'
   }).then(function(data) {
-  	$scope.usedbestsellers = data;
+    $scope.usedbestsellers = data;
   });
 
   productService.query({
-  	bestselling: true,
-  	newOnly: true,
-  	usedOnly: false,
+    bestselling: true,
+    newOnly: true,
+    usedOnly: false,
     platforms: $scope.platformIds,
-  	'sort.direction': 'desc',
-  	'sort.field': 'newbestselling'
+    'sort.direction': 'desc',
+    'sort.field': 'newbestselling'
   }).then(function(data) {
-  	$scope.newbestsellers = data;
+    $scope.newbestsellers = data;
   });
 
   productService.query({
@@ -50,4 +52,8 @@ angular.module('GameFly')
   }).then(function(data) {
     $scope.freeshippings = data;
   });
+
+  $scope.showSystem = function() {
+    modalService.show('system', $scope);
+  };
 });
