@@ -9,7 +9,7 @@ angular.module('GameFly')
       itemOffset: skip || 0,
       pageSize: limit || 10,
       platforms: platformIds || [],
-      productType: productType || 'ConsoleGame'
+      productType: productType
     };
   };
 
@@ -17,7 +17,7 @@ angular.module('GameFly')
     switch (vertical) {
       case 'movies':
         return 'Movie';
-      default:
+      case 'games':
         return 'ConsoleGame';
     }
   };
@@ -98,6 +98,29 @@ angular.module('GameFly')
     });
   };
 
+  var getPreorders = function(productType, platformIds, skip, limit) {
+    var params = getQueryParams(productType, platformIds, skip, limit);
+    return productService.query(_.merge(params, {
+      preorders: true,
+      'sort.direction': 'asc',
+      'sort.field': 'releasedate'
+    })).then(function(data) {
+      data.title = 'Pre-Orders';
+      return data;
+    });
+  };
+
+  var getFreeShippings = function(productType, platformIds, skip, limit) {
+    var params = getQueryParams(productType, platformIds, skip, limit);
+    return productService.query(_.merge(params, {
+      freeshippingonly: true,
+      purchaseOnly: true
+    })).then(function(data) {
+      data.title = 'Free Shipping';
+      return data;
+    });
+  }
+
   var get = function(vertical, platformIds, category, skip, limit) {
     var productType = getProductType(vertical);
     switch (category) {
@@ -113,6 +136,10 @@ angular.module('GameFly')
         return getUsedBestsellers(productType, platformIds, skip, limit);
       case 'newbestsellers':
         return getNewBestsellers(productType, platformIds, skip, limit);
+      case 'preorders':
+        return getPreorders(productType, platformIds, skip, limit);
+      case 'freeshippings':
+        return getFreeShippings(productType, platformIds, skip, limit);
     }
   };
 
