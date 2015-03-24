@@ -9,7 +9,7 @@
       <div ng-if="merchandising.featureds.length">
   			<div class="item item-divider">
       		Featured
-          <a class="pull-right">See All &gt;</a>
+          <a class="pull-right" ng-click="seeAll('featured', merchandising.featureds)">See All &gt;</a>
     		</div>
     		<ion-scroll direction="x">
     			<div class="row row-bottom">
@@ -22,7 +22,7 @@
       <div ng-if="mostpopular.items.length">
     		<div class="item item-divider">
       		Most Popular
-          <a class="pull-right">See All &gt;</a>
+          <a class="pull-right" ng-click="seeAll('mostpopular', mostpopular)">See All &gt;</a>
     		</div>
     		<ion-scroll direction="x">
     			<div class="row row-bottom">
@@ -35,7 +35,7 @@
       <div ng-if="newreleases.items.length">
         <div class="item item-divider">
           New Releases
-          <a class="pull-right">See All &gt;</a>
+          <a class="pull-right" ng-click="seeAll('newreleases', newreleases)">See All &gt;</a>
         </div>
         <ion-scroll direction="x">
           <div class="row row-bottom">
@@ -48,7 +48,7 @@
       <div ng-if="comingsoon.items.length">
         <div class="item item-divider">
           Coming Soon
-          <a class="pull-right">See All &gt;</a>
+          <a class="pull-right" ng-click="seeAll('comingsoon', comingsoon)">See All &gt;</a>
         </div>
         <ion-scroll direction="x">
           <div class="row row-bottom">
@@ -61,7 +61,7 @@
       <div ng-if="usedbestsellers.items.length">
         <div class="item item-divider">
           Used Bestsellers
-          <a class="pull-right">See All &gt;</a>
+          <a class="pull-right" ng-click="seeAll('usedbestsellers', usedbestsellers)">See All &gt;</a>
         </div>
         <ion-scroll direction="x">
           <div class="row row-bottom">
@@ -74,7 +74,7 @@
       <div ng-if="newbestsellers.items.length">
         <div class="item item-divider">
           New Bestsellers
-          <a class="pull-right">See All &gt;</a>
+          <a class="pull-right" ng-click="seeAll('newbestsellers', newbestsellers)">See All &gt;</a>
         </div>
         <ion-scroll direction="x">
           <div class="row row-bottom">

@@ -62,6 +62,22 @@ angular.module('GameFly', ['ionic', 'angular-carousel'])
     }
   })
 
+  .state('app.list', {
+    url: '/{vertical}/{platform}/{category}',
+    params: {
+      vertical: { value: null, squash: true },
+      platform: { value: null, squash: true },
+      category: { value: null, squash: true },
+      data: { value: null }
+    },
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/list.html',
+        controller: 'listController'
+      }
+    }
+  })
+
   .state('app.movies', {
     url: '/movies/:platform',
     params: {

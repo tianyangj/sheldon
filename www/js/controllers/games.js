@@ -2,7 +2,7 @@
 
 angular.module('GameFly')
 
-.controller('gamesController', function($scope, $stateParams, modalService, merchandisingService, productService, platformConfig) {
+.controller('gamesController', function($scope, $state, $stateParams, modalService, merchandisingService, productService, platformConfig) {
 
   $scope.vertical = 'games';
 
@@ -70,5 +70,14 @@ angular.module('GameFly')
 
   $scope.showSystem = function() {
     modalService.show('system', $scope);
+  };
+
+  $scope.seeAll = function(category, data) {
+    $state.go('app.list', {
+      vertical: $scope.vertical,
+      platform: $scope.platform ? $scope.platform.name : 'all',
+      category: category,
+      data: data
+    });
   };
 });

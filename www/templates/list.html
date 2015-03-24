@@ -1,0 +1,20 @@
+<ion-view view-title="{{title}}">
+  <ion-content>
+    <ul class="list">
+    	<li class="item item-thumbnail-left item-button-right" ng-repeat="item in items">
+    		<img ng-src="{{item.thumbnailImage}}">
+      	<h2>{{item.title}}</h2>
+      	<p>{{item.platformId | gfPlatform}}</p>
+      	<p>rating...</p>
+      	<button class="button button-royal">
+      		<i class="icon ion-forward"></i>
+      	</button>
+    	</li>
+    </ul>
+    <ion-infinite-scroll
+    	ng-if="!isLast"
+	    on-infinite="loadMore()"
+	    distance="10%">
+	  </ion-infinite-scroll>
+  </ion-content>
+</ion-view>
