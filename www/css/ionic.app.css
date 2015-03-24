@@ -7628,6 +7628,12 @@ a.button {
     .hero-unit .info h1 {
       font-size: 18px; }
 
+ul.rating li {
+  display: inline; }
+  ul.rating li i {
+    font-size: 1em;
+    color: #d65611; }
+
 .col-thumbnail {
   flex: 0 0 auto;
   max-width: 110px; }

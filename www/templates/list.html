@@ -5,7 +5,7 @@
     		<img ng-src="{{item.thumbnailImage}}">
       	<h2>{{item.title}}</h2>
       	<p>{{item.platformId | gfPlatform}}</p>
-      	<p>rating...</p>
+      	<p><gf-rating rate="item.userRating/2" max="5"></gf-rating></p>
       	<button class="button button-royal">
       		<i class="icon ion-forward"></i>
       	</button>

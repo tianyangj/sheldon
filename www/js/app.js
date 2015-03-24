@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('GameFly', ['ionic', 'angular-carousel'])
+angular.module('GameFly', ['ionic', 'ionic.rating', 'angular-carousel'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
