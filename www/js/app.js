@@ -88,28 +88,22 @@ angular.module('GameFly', ['ionic', 'ionic.rating', 'angular-carousel'])
     }
   })
 
-  .state('app.list', {
-    url: '/{vertical}/{platform}/{category}',
-    params: {
-      vertical: { value: null, squash: true },
-      platform: { value: null, squash: true },
-      category: { value: null, squash: true },
-      data: { value: null }
-    },
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/list.html',
-        controller: 'listController'
-      }
-    }
-  })
-
   .state('app.filter', {
     url: '/filter?vertical&platform',
     views: {
       'menuContent': {
         templateUrl: 'templates/filter.html',
         controller: 'filterController'
+      }
+    }
+  })
+
+  .state('app.search', {
+    url: '/search',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/search.html',
+        controller: 'searchController'
       }
     }
   })
@@ -153,6 +147,22 @@ angular.module('GameFly', ['ionic', 'ionic.rating', 'angular-carousel'])
       'menuContent': {
         templateUrl: 'templates/signup.html',
         controller: 'signupController'
+      }
+    }
+  })
+
+  .state('app.list', {
+    url: '/{vertical}/{platform}/{category}',
+    params: {
+      vertical: { value: null, squash: true },
+      platform: { value: null, squash: true },
+      category: { value: null, squash: true },
+      data: { value: null }
+    },
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/list.html',
+        controller: 'listController'
       }
     }
   });
