@@ -1,4 +1,7 @@
 <ion-view view-title="{{title}}">
+  <ion-nav-buttons side="right">
+    <button class="button button-clear" ui-sref="app.filter({vertical:vertical,platform:platform.id})">Filter</button>
+  </ion-nav-buttons>
   <ion-content>
     <ul class="list">
     	<li class="item item-thumbnail-left item-button-right" ng-repeat="item in items">
