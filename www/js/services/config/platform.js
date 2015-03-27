@@ -41,6 +41,8 @@ angular.module('GameFly')
 
 .factory('platformConfig', function(platformConstants) {
 
+	var all = platformConstants.games.concat(platformConstants.movies);
+
 	return {
 		get: function(vertical, name, id) {
 			switch(vertical) {
@@ -56,6 +58,11 @@ angular.module('GameFly')
 					});
 				case 'store':
 					return _(platformConstants.stores).find(function(platform) {
+						if (name) return platform.name === name;
+						if (id) return platform.id === id;
+					});
+				case 'all':
+					return _(all).find(function(platform) {
 						if (name) return platform.name === name;
 						if (id) return platform.id === id;
 					});

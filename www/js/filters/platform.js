@@ -6,7 +6,7 @@ angular.module('GameFly')
 
 	return function(input) {
 		if (angular.isNumber(input)) {
-			return platformConfig.get('store', null, input).value;
+			return platformConfig.get('all', null, input).value;
 		}
 		return 'N/A';
 	};

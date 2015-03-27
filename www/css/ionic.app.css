@@ -7665,3 +7665,13 @@ ul.rating li {
   line-height: 0px; }
 .list .item.item-accordion.ng-hide-add, .list .item.item-accordion.ng-hide-remove {
   display: block !important; }
+
+.bar span.search-result {
+  width: 90px;
+  font-size: 75%; }
+.bar .button-icon.search-clear {
+  padding: 0;
+  opacity: 0.5;
+  width: 30px; }
+  .bar .button-icon.search-clear:before {
+    font-size: 100%; }

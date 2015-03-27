@@ -8,21 +8,17 @@ angular.module('GameFly')
 
   $scope.data = {};
 
-  $scope.onFocus = function() {
-    console.log('focused...')
-    $scope.isFocused = true;
-  };
-
-  $scope.onBlur = function() {
-    console.log('blured...')
-    $scope.isFocused = false;
+  $scope.clear = function() {
+    $scope.data.query = '';
+    $scope.items = [];
+    $scope.totalItems = 0;
   };
 
   $scope.search = function() {
-    console.log('searching...', $scope.data)
     if ($scope.data.query === '') {
       $timeout.cancel(timeout);
       $scope.items = [];
+      $scope.totalItems = 0;
       return;
     }
     if (timeout) {
@@ -37,6 +33,7 @@ angular.module('GameFly')
         'sort.field': 'mostpopular'
       }).then(function(data) {
         $scope.items = data.items;
+        $scope.totalItems = data.totalItems;
       });
     }, 300);
   };
