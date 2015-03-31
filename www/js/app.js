@@ -29,6 +29,9 @@ angular.module('GameFly', ['ionic', 'ionic.rating', 'angular-carousel'])
           config.headers['X-XSRF-TOKEN'] = token;
         }
         return config;
+      },
+      responseError: function(rejection) {
+        alert(JSON.stringify(rejection))
       }
     };
   });
@@ -152,11 +155,8 @@ angular.module('GameFly', ['ionic', 'ionic.rating', 'angular-carousel'])
   })
 
   .state('app.list', {
-    url: '/{vertical}/{platform}/{category}',
+    url: '/{vertical:(?:games|movies|store)}/{platform}/{category}',
     params: {
-      vertical: { value: null, squash: true },
-      platform: { value: null, squash: true },
-      category: { value: null, squash: true },
       data: { value: null }
     },
     views: {
