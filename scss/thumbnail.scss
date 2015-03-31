@@ -1,5 +1,5 @@
 .col-thumbnail {
-	flex: 0 0 auto;
+	@include flex(0, 0, auto);
 	max-width: 110px;
 }
 

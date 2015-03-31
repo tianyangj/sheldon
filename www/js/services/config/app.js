@@ -4,6 +4,7 @@ angular.module('GameFly')
 
 .constant('appConstants', {
 	apiHost: 'http://127.0.0.1:3000/api'
+	//apiHost: 'https://api.gamefly.com/api'
 })
 
 .factory('appConfig', function(appConstants) {
