@@ -1,0 +1,25 @@
+<div class="button-bar" ng-if="offers">
+	<a class="button button-royal" ng-if="rentOffer" ng-click="onRent()">
+		<div ng-if="rentOffer.isAlreadyInQueue">In Queue</div>
+		<div ng-if="rentOffer.isRented">
+			Keep <gf-price list-price="keepOffer.listPrice" purchase-price="keepOffer.purchasePrice"></gf-price>
+		</div>
+		<div ng-if="!rentOffer.isAlreadyInQueue && !rentOffer.isRented">
+			Rent <span>{{rentOffer.availability}}</span>
+		</div>
+	</a>
+	<a class="button button-royal" ng-if="newOffer || usedOffer" ng-click="onPurchase()" ng-switch="purchaseAction">
+		<div ng-switch-when="Buy">
+			Buy <gf-price list-price="usedOffer.listPrice" purchase-price="usedOffer.purchasePrice"></gf-price>
+		</div>
+		<div ng-switch-when="Pre-Order">
+			Pre-Order <gf-price list-price="newOffer.listPrice" purchase-price="newOffer.purchasePrice"></gf-price>
+		</div>
+		<div ng-switch-when="Buy New">
+			Buy New <gf-price list-price="newOffer.listPrice" purchase-price="newOffer.purchasePrice"></gf-price>
+		</div>
+		<div ng-switch-when="Buy Used">
+			Buy Used <gf-price list-price="usedOffer.listPrice" purchase-price="usedOffer.purchasePrice"></gf-price>
+		</div>
+	</a>
+</div>
