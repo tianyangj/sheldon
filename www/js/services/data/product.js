@@ -9,9 +9,12 @@ angular.module('GameFly')
       method: 'GET',
       url: appConfig.getApiUrl('/product/get/' + productId)
     }).then(function(response) {
-      console.log(response.data)
-      return {
-        hero: {
+      var viewModel = {
+        product: response.data.product,
+        recommendations: response.data.recommendedProducts
+      };
+      if (response.data.merchandisingInfo) {
+        viewModel.hero = {
           viewports: _(response.data.merchandisingInfo.product.design.viewportGroups).map(function(viewport) {
             return {
               size: viewport.viewport,
@@ -23,10 +26,9 @@ angular.module('GameFly')
               })
             };
           }).value()
-        },
-        product: response.data.product,
-        recommendations: response.data.recommendedProducts
-      };
+        };
+      }
+      return viewModel;
     });
   };
 
