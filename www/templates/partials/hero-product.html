@@ -1,0 +1,15 @@
+<div class="hero-unit">
+	<div class="hero-background">
+	</div>
+	<div class="info row">
+        <div class="col col-33">
+          <img class="full-image" ng-src="{{product.frontImage}}" />
+        </div>
+        <div class="col">
+          <h1>{{product.title}}</h1>
+          <p>{{product.platform.name}}</p>
+          <p>{{product.genre.name}}</p>
+          <gf-offer offers="product.offerActions"></gf-offer>
+        </div>
+      </div>
+</div>

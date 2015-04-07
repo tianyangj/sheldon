@@ -7623,10 +7623,22 @@ a.button {
     background-color: #000; }
     .hero-unit .layer.opacity {
       opacity: 0.5; }
+  .hero-unit .hero-background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: url(/img/hero-placeholder.jpg);
+    background-size: cover;
+    -webkit-filter: blur(3px); }
   .hero-unit .info {
-    position: absolute; }
+    position: absolute;
+    color: #fff; }
+    .hero-unit .info img {
+      border: 1px solid;
+      border-radius: 5px; }
     .hero-unit .info h1 {
-      font-size: 18px; }
+      font-size: 18px;
+      color: #fff; }
 
 ul.rating li {
   display: inline; }

@@ -4,24 +4,8 @@
       Rent
     </button>
   </ion-nav-buttons>
-  <ion-content>
-    <div class="hero-unit">
-      <div class="layer opacity" ng-attr-style="{'background-image':'url('+hero.viewports[3].image.rendered.url+')'}"></div>
-      <!--<video class="layer" ng-attr-poster="{{hero.viewports[3].video.rendered.url}}" autoplay controls>
-        <source ng-src="{{hero.viewports[3].video.displays[1].file}}">
-      </video>-->
-      <div class="info row">
-        <div class="col col-33">
-          <img class="full-image" ng-src="{{product.frontImage}}" />
-        </div>
-        <div class="col">
-          <h1>{{product.title}}</h1>
-          <p>{{product.platform.name}}</p>
-          <p>{{product.genre.name}}</p>
-          <gf-offer offers="product.offerActions"></gf-offer>
-        </div>
-      </div>
-    </div>
+  <ion-content has-bouncing="false">
+    <gf-hero-product hero="hero" product="product"></gf-hero-product>
     <div class="list">
 
       <div class="item item-divider">
