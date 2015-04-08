@@ -5,10 +5,13 @@ angular.module('GameFly')
 .filter('gfDuration', function(platformConfig) {
 
 	return function(input) {
-		var dot = input.indexOf('.');
-		if (dot < 0) {
-			return input;
+		if (input) {
+			var dot = input.indexOf('.');
+			if (dot < 0) {
+				return input;
+			}
+			return input.substr(0, dot);
 		}
-		return input.substr(0, dot);
+		return 'N/A';
 	};
 });
