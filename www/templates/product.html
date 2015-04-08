@@ -1,12 +1,46 @@
 <ion-view view-title="{{product.title}}">
   <ion-nav-buttons side="right">
+    <button class="button button-icon icon ion-ios-upload-outline"></button>
     <button class="button button-clear" ng-click="rent(product)">
       Rent
     </button>
   </ion-nav-buttons>
   <ion-content has-bouncing="false">
     <gf-hero-product hero="hero" product="product"></gf-hero-product>
+    <div class="button-bar">
+      <a class="button">Details</a>
+      <a class="button">Reviews</a>
+      <a class="button">Related</a>
+    </div>
     <div class="list">
+
+      <div ng-if="images.items.length">
+        <div class="item item-divider">
+          Images ({{images.totalItems}})
+        </div>
+        <ion-scroll direction="x">
+          <div class="row row-bottom">
+            <div class="col col-image" ng-repeat="image in images.items">
+              <img class="full-image" ng-src="{{image.item.sources[3].url}}" />
+            </div>
+          </div>
+        </ion-scroll>
+      </div>
+
+      <div ng-if="videos.items.length">
+        <div class="item item-divider">
+          Videos ({{videos.totalItems}})
+        </div>
+        <ion-scroll direction="x">
+          <div class="row row-bottom">
+            <div class="col col-video" ng-repeat="video in videos.items">
+              <img class="full-image" ng-src="{{video.item.previewUrl}}" />
+              <span class="duration">{{video.item.duration | gfDuration}}</span>
+              <span class="icon ion-play"></span>
+            </div>
+          </div>
+        </ion-scroll>
+      </div>
 
       <div class="item item-divider">
         Details
@@ -36,31 +70,7 @@
         </div>
       </div>
 
-      <div ng-if="images.items.length">
-        <div class="item item-divider">
-          Images ({{images.totalItems}})
-        </div>
-        <ion-scroll direction="x">
-          <div class="row row-bottom">
-            <div class="col col-66" ng-repeat="image in images.items">
-              <img class="full-image" ng-src="{{image.item.sources[3].url}}" />
-            </div>
-          </div>
-        </ion-scroll>
-      </div>
-
-      <div ng-if="videos.items.length">
-        <div class="item item-divider">
-          Videos ({{videos.totalItems}})
-        </div>
-        <ion-scroll direction="x">
-          <div class="row row-bottom">
-            <div class="col col-66" ng-repeat="video in videos.items">
-              <img class="full-image" ng-src="{{video.item.previewUrl}}" />
-            </div>
-          </div>
-        </ion-scroll>
-      </div>
+      
 
       <div ng-if="product.techSpecs.length">
         <div class="item item-divider">

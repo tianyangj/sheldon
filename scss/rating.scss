@@ -1,8 +1,12 @@
-ul.rating li {
-  display: inline;
+ul.rating {
+	display: inline-block;
 
-  i {
-  	font-size: 1em;
-  	color: $royal;
-  }
-}
+	li {
+  		display: inline;
+
+  		i {
+  			font-size: 1em;
+  			color: $royal;
+  		}
+	}
+} 

@@ -3,6 +3,39 @@
 	max-width: 110px;
 }
 
+.col-image, .col-video {
+	@include flex(0, 0, auto);
+	width: 240px;
+	height: 135px;
+
+	.full-image {
+		height: 100%;
+	}
+}
+
+.col-video {
+	position: relative;
+
+	.duration {
+		position: absolute;
+		bottom: 0;
+		right: 0;
+		margin: 5px;
+		padding: 5px 10px;
+		background-color: rgba(0, 0, 0, 0.75);
+		color: #fff;
+		font-weight: bold;
+	}
+
+	.ion-play {
+		position: absolute;
+		top: 40px;
+		left: 110px;
+		font-size: 400%;
+		color: rgba(0, 0, 0, 0.75);
+	}
+}
+
 .pull-right {
 	float: right;
 }
