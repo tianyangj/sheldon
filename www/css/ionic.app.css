@@ -7735,6 +7735,22 @@ ul.rating {
 .list .item.item-accordion.ng-hide-add, .list .item.item-accordion.ng-hide-remove {
   display: block !important; }
 
+.dl-horizontal {
+  margin-bottom: 0;
+  font-size: 14px; }
+  .dl-horizontal dt {
+    float: left;
+    width: 100px;
+    overflow: hidden;
+    clear: left;
+    text-align: right;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-weight: normal; }
+  .dl-horizontal dd {
+    margin-left: 120px;
+    white-space: normal; }
+
 .bar span.search-result {
   width: 90px;
   font-size: 75%; }
