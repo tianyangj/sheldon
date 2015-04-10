@@ -1,0 +1,7 @@
+<div class="collapsible-panel">
+	<h2>
+		{{title}}
+  		<span class="pull-right icon" ng-class="CollapsiblePanelCtrl.isCollapsed ? 'ion-ios-plus-empty' : 'ion-ios-minus-empty'" ng-click="CollapsiblePanelCtrl.collapse()"></span>
+  	</h2>
+   	<p class="collapsing" ng-class="CollapsiblePanelCtrl.isCollapsed ? 'collapsed' : 'expanded'" ng-bind-html="content"></p>
+</div>

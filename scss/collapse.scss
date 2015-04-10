@@ -1,0 +1,23 @@
+.collapsible-panel {
+  
+  h2 .icon {
+    padding: 0 10px;
+  }
+
+  .collapsed {
+    white-space: normal;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+  }
+
+  .expanded {
+    white-space: normal;
+  }
+
+  .collapsing {
+    @include transition-timing-function(ease);
+    @include transition-duration(350ms);
+    @include transition-property(height);
+  }
+}

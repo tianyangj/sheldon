@@ -7602,6 +7602,23 @@ a.button {
   -webkit-transition-duration: 0s;
   transition-duration: 0s; }
 
+.collapsible-panel h2 .icon {
+  padding: 0 10px; }
+.collapsible-panel .collapsed {
+  white-space: normal;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical; }
+.collapsible-panel .expanded {
+  white-space: normal; }
+.collapsible-panel .collapsing {
+  -webkit-transition-timing-function: ease;
+  transition-timing-function: ease;
+  -webkit-transition-duration: 350ms;
+  transition-duration: 350ms;
+  -webkit-transition-property: height;
+  transition-property: height; }
+
 .hero-unit {
   position: relative;
   height: 200px; }
