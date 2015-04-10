@@ -38,7 +38,7 @@ angular.module('GameFly')
 						return offer.offerActionType === 'Keep';
 					});
 					// normalize rentOffer and keepOffer
-					if (rentOffer && rentOffer.canRent) {
+					if (rentOffer && (rentOffer.canRent || rentOffer.canRegisterToRent)) {
 						if (keepOffer && rentOffer.isRented) {
 							$scope.keepOffer = keepOffer;
 						}
