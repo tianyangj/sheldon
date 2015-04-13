@@ -40,4 +40,21 @@ angular.module('GameFly')
       });
     });
   };
+
+  $scope.onTabSelected = function(tab) {
+    switch(tab) {
+      case 'reviews':
+        $scope.isReviews = true;
+        $scope.isDetails = $scope.isRelated = false;
+        break;
+      case 'related':
+        $scope.isRelated = true;
+        $scope.isDetails = $scope.isReviews = false;
+        break;
+      default:
+        $scope.isDetails = true;
+        $scope.isReviews = $scope.isRelated = false;
+    }
+  };
+
 });

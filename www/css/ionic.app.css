@@ -7751,6 +7751,17 @@ ul.rating {
     margin-left: 120px;
     white-space: normal; }
 
+.flex-wrap {
+  flex-wrap: wrap; }
+
+.main-container {
+  position: relative; }
+  .main-container .tabs {
+    position: relative;
+    top: 0; }
+  .main-container .main-content {
+    position: relative; }
+
 .bar span.search-result {
   width: 90px;
   font-size: 75%; }

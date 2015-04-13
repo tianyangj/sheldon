@@ -6,79 +6,83 @@
     </button>
   </ion-nav-buttons>
   <ion-content has-bouncing="false">
+    <!-- product hero -->
     <gf-hero-product hero="hero" product="product"></gf-hero-product>
-    <div class="button-bar">
-      <a class="button">Details</a>
-      <a class="button">Reviews</a>
-      <a class="button">Related</a>
-    </div>
-    <div class="list">
-
-      <div ng-if="images.items.length">
-        <div class="item item-divider">
-          Images ({{images.totalItems}})
+    <!-- product content -->
+    <div class="main-container">
+      <!-- tabs -->
+      <ion-tabs class="tabs-striped tabs-top tabs-background-positive tabs-color-light">
+        <ion-tab title="Details" on-select="onTabSelected('details')">
+        </ion-tab>
+        <ion-tab title="Reviews" on-select="onTabSelected('reviews')">
+        </ion-tab>
+        <ion-tab title="Related" on-select="onTabSelected('related')">
+        </ion-tab>
+      </ion-tabs>
+      <!-- contents -->
+      <div class="main-content">
+        <!-- tab details -->
+        <div class="list" ng-if="isDetails">
+          <div ng-if="images.items.length">
+            <div class="item item-divider">
+              Images ({{images.totalItems}})
+            </div>
+            <ion-scroll direction="x">
+              <div class="row row-bottom">
+                <div class="col col-image" ng-repeat="image in images.items">
+                  <img class="full-image" ng-src="{{image.item.sources[3].url}}" />
+                </div>
+              </div>
+            </ion-scroll>
+          </div>
+          <div ng-if="videos.items.length">
+            <div class="item item-divider">
+              Videos ({{videos.totalItems}})
+            </div>
+            <ion-scroll direction="x">
+              <div class="row row-bottom">
+                <div class="col col-video" ng-repeat="video in videos.items">
+                  <img class="full-image" ng-src="{{video.item.previewUrl}}" />
+                  <span class="duration">{{video.item.duration | gfDuration}}</span>
+                  <span class="icon ion-play"></span>
+                </div>
+              </div>
+            </ion-scroll>
+          </div>
+          <div class="item" ng-if="product.description">
+            <gf-collapsible-panel title="Description" content="product.description"></gf-collapsible-panel>
+          </div>
+          <div class="item">
+            <h2>Information</h2>
+            <dl class="dl-horizontal">
+              <dt>Release Date</dt>
+              <dd>{{product.releaseDate.date | date}}</dd>
+              <dt>Publisher</dt>
+              <dd>{{product.publisher}}</dd>
+              <dt>ESRB Rating</dt>
+              <dd>{{product.contentRating.descriptors | gfDescriptor}}</dd>
+            </dl>
+          </div>
+          <div class="item" ng-if="product.techSpecs.length">
+            <h2>Specs &amp; Requirements</h2>
+            <dl class="dl-horizontal">
+              <dt ng-repeat-start="spec in product.techSpecs">{{spec.name}}</dt>
+              <dd ng-repeat-end>{{spec.value}}</dd>
+            </dl>
+          </div>
         </div>
-        <ion-scroll direction="x">
-          <div class="row row-bottom">
-            <div class="col col-image" ng-repeat="image in images.items">
-              <img class="full-image" ng-src="{{image.item.sources[3].url}}" />
+        <!-- tab related -->
+        <div class="list" ng-if="isRelated">
+          <div ng-if="recommendations.length">
+            <div class="item item-divider">Users Also Played</div>
+            <div class="row row-bottom flex-wrap">
+              <div class="col col-33" ng-repeat="recommendation in recommendations" ui-sref="app.product({productId:recommendation.id,product:recommendation})">
+                <img class="full-image" ng-src="{{recommendation.thumbnailImage}}" />
+              </div>
             </div>
           </div>
-        </ion-scroll>
-      </div>
-
-      <div ng-if="videos.items.length">
-        <div class="item item-divider">
-          Videos ({{videos.totalItems}})
         </div>
-        <ion-scroll direction="x">
-          <div class="row row-bottom">
-            <div class="col col-video" ng-repeat="video in videos.items">
-              <img class="full-image" ng-src="{{video.item.previewUrl}}" />
-              <span class="duration">{{video.item.duration | gfDuration}}</span>
-              <span class="icon ion-play"></span>
-            </div>
-          </div>
-        </ion-scroll>
       </div>
-
-      <div class="item" ng-if="product.description">
-        <gf-collapsible-panel title="Description" content="product.description"></gf-collapsible-panel>
-      </div>
-
-      <div class="item">
-        <h2>Information</h2>
-        <dl class="dl-horizontal">
-          <dt>Release Date</dt>
-          <dd>{{product.releaseDate.date | date}}</dd>
-          <dt>Publisher</dt>
-          <dd>{{product.publisher}}</dd>
-          <dt>ESRB Rating</dt>
-          <dd>{{product.contentRating.descriptors | gfDescriptor}}</dd>
-        </dl>
-      </div>
-
-      <div class="item" ng-if="product.techSpecs.length">
-        <h2>Specs &amp; Requirements</h2>
-        <dl class="dl-horizontal">
-          <dt ng-repeat-start="spec in product.techSpecs">{{spec.name}}</dt>
-          <dd ng-repeat-end>{{spec.value}}</dd>
-        </dl>
-      </div>
-
-      <div ng-if="recommendations.length">
-        <div class="item item-divider">
-          Users Also Played
-        </div>
-        <ion-scroll direction="x">
-          <div class="row row-bottom">
-            <div class="col col-33" ng-repeat="recommendation in recommendations" ui-sref="app.product({productId:recommendation.id,product:recommendation})">
-              <img class="full-image" ng-src="{{recommendation.thumbnailImage}}" />
-            </div>
-          </div>
-        </ion-scroll>
-      </div>
-
     </div>
   </ion-content>
 </ion-view>
