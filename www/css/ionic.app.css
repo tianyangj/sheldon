@@ -7761,6 +7761,32 @@ ul.rating {
     top: 0; }
   .main-container .main-content {
     position: relative; }
+    .main-container .main-content .rating-score {
+      width: 80px;
+      height: 80px;
+      line-height: 80px;
+      background-color: #d65611;
+      color: #fff;
+      font-size: 30px;
+      text-align: center; }
+    .main-container .main-content .rating-list {
+      padding: 0 5px; }
+      .main-container .main-content .rating-list label {
+        position: absolute;
+        right: 10px;
+        line-height: 10px;
+        font-size: 8px; }
+      .main-container .main-content .rating-list .progress {
+        height: 10px;
+        background-color: #f5f5f5;
+        margin: 5px; }
+      .main-container .main-content .rating-list .progress-bar {
+        float: left;
+        width: 0%;
+        height: 100%;
+        background-color: #d65611; }
+    .main-container .main-content .rating-item {
+      position: relative; }
 
 .bar span.search-result {
   width: 90px;
