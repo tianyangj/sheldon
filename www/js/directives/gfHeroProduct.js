@@ -22,7 +22,7 @@ angular.module('GameFly')
 						background.css({
 							'background-image': 'url(' + asset.rendered.url + ')'
 						});
-						$scope.asset = asset;
+						scope.asset = asset;
 					}
 				}
 			});

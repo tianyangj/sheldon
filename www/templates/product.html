@@ -75,7 +75,10 @@
         <div class="padding" ng-show="isReviews">
           <h2>User Ratins</h2>
           <div class="row">
-            <div class="rating-score">{{product.userRatingCount}}</div>
+            <div class="rating-score">
+              <div>{{product.averageUserRating}}</div>
+              <div class="count">({{product.userRatingCount}})</div>
+            </div>
             <div class="rating-list col">
               <div class="rating-item" ng-repeat="rating in product.ratingIndexSummary.slice().reverse()">
                 <label>{{rating.startRating}} - {{rating.endRating}}</label>
@@ -93,7 +96,13 @@
               <button class="button button-clear button-royal">Rate</button>
             </div>
           </div>
-          <div>list of top reviews...</div>
+          <ul class="list">
+            <li class="item" ng-repeat="review in reviews.items">
+              <h4>{{review.reviewTitle}}</h4>
+              <p>{{review.userRatingScore}}/10 by {{review.reviewerName}} - {{review.dateCreated | date}}</p>
+              <p>{{review.reviewBody}}</p>
+            </li>
+          </ul>
         </div>
         <!-- tab related -->
         <div class="list" ng-show="isRelated">

@@ -23,6 +23,13 @@ angular.module('GameFly')
   	$scope.videos = data;
   });
 
+  productService.getReview({
+    productId: $stateParams.productId,
+    sortOrder: 'MostHelpful'
+  }).then(function(data){
+    $scope.reviews = data;
+  });
+
   $scope.rent = function(product) {
     queueService.add(product.id).then(function(){
       $ionicPopup.confirm({

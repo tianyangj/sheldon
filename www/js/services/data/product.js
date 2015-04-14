@@ -47,6 +47,16 @@ angular.module('GameFly')
     });
   };
 
+  var getReview = function(params) {
+    return $http({
+      method: 'GET',
+      url: appConfig.getApiUrl('/userreview/findpage'),
+      params: params
+    }).then(function(response) {
+      return response.data;
+    });
+  };
+
   var query = function(params) {
     return $http({
       method: 'GET',
@@ -60,6 +70,7 @@ angular.module('GameFly')
   return {
     get: get,
     getMedia: getMedia,
+    getReview: getReview,
     query: query
   };
 });

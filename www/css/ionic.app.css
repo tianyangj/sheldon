@@ -7762,6 +7762,7 @@ ul.rating {
   .main-container .main-content {
     position: relative; }
     .main-container .main-content .rating-score {
+      position: relative;
       width: 80px;
       height: 80px;
       line-height: 80px;
@@ -7769,6 +7770,13 @@ ul.rating {
       color: #fff;
       font-size: 30px;
       text-align: center; }
+      .main-container .main-content .rating-score .count {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        line-height: 20px;
+        font-size: 12px; }
     .main-container .main-content .rating-list {
       padding: 0 5px; }
       .main-container .main-content .rating-list label {
