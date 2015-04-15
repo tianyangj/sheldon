@@ -7754,6 +7754,12 @@ ul.rating {
 .flex-wrap {
   flex-wrap: wrap; }
 
+.collapsed {
+  white-space: normal !important;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical; }
+
 .main-container {
   position: relative; }
   .main-container .tabs {

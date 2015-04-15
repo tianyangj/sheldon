@@ -97,10 +97,11 @@
             </div>
           </div>
           <ul class="list">
-            <li class="item" ng-repeat="review in reviews.items">
-              <h4>{{review.reviewTitle}}</h4>
-              <p>{{review.userRatingScore}}/10 by {{review.reviewerName}} - {{review.dateCreated | date}}</p>
-              <p>{{review.reviewBody}}</p>
+            <li class="item item-icon-right" ng-repeat="review in reviews.items">
+              <h2>{{review.reviewTitle}}</h2>
+              <h3>{{review.userRatingScore}}/10 by {{review.reviewerName}} - {{review.dateCreated | date}}</h3>
+              <p class="collapsed">{{review.reviewBody}}</p>
+              <i class="icon ion-ios-arrow-right"></i>
             </li>
           </ul>
         </div>
