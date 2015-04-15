@@ -1,0 +1,18 @@
+<a class="button button-royal button-buy" ng-if="newOffer || usedOffer" ng-click="onPurchase()" ng-switch="purchaseAction">
+	<div ng-switch-when="Buy">
+		<span class="text-uppercase pull-left">Buy</span> 
+		<small class="pull-right"><gf-price list-price="usedOffer.listPrice" purchase-price="usedOffer.purchasePrice"></gf-price></small>
+	</div>
+	<div ng-switch-when="Pre-Order">
+		<span class="text-uppercase pull-left">Pre-Order</span>
+		<small class="pull-right"><gf-price list-price="newOffer.listPrice" purchase-price="newOffer.purchasePrice"></gf-price></small>
+	</div>
+	<div ng-switch-when="Buy New">
+		<span class="text-uppercase pull-left">Buy</span>
+		<small class="pull-right">New <gf-price list-price="newOffer.listPrice" purchase-price="newOffer.purchasePrice"></gf-price></small>
+	</div>
+	<div ng-switch-when="Buy Used">
+		<span class="text-uppercase pull-left">Buy</span>
+		<small class="pull-right">Used <gf-price list-price="usedOffer.listPrice" purchase-price="usedOffer.purchasePrice"></gf-price></small>
+	</div>
+</a>

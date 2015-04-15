@@ -7760,6 +7760,9 @@ ul.rating {
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical; }
 
+.text-uppercase {
+  text-transform: uppercase; }
+
 .main-container {
   position: relative; }
   .main-container .tabs {
@@ -7801,6 +7804,9 @@ ul.rating {
         background-color: #d65611; }
     .main-container .main-content .rating-item {
       position: relative; }
+
+.button-rent, .button-buy {
+  width: 150px; }
 
 .bar span.search-result {
   width: 90px;

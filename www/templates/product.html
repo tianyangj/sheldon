@@ -11,7 +11,7 @@
     <!-- product content -->
     <div class="main-container">
       <!-- tabs -->
-      <ion-tabs class="tabs-striped tabs-top tabs-background-positive tabs-color-light">
+      <ion-tabs class="tabs-striped tabs-top tabs-background-dark tabs-color-light">
         <ion-tab title="Details" on-select="onTabSelected('details')">
         </ion-tab>
         <ion-tab title="Reviews" on-select="onTabSelected('reviews')">
@@ -100,7 +100,7 @@
             <li class="item item-icon-right" ng-repeat="review in reviews.items">
               <h2>{{review.reviewTitle}}</h2>
               <h3>{{review.userRatingScore}}/10 by {{review.reviewerName}} - {{review.dateCreated | date}}</h3>
-              <p class="collapsed">{{review.reviewBody}}</p>
+              <p class="collapsed" ng-bind-html="review.reviewBody"></p>
               <i class="icon ion-ios-arrow-right"></i>
             </li>
           </ul>
@@ -119,4 +119,13 @@
       </div>
     </div>
   </ion-content>
+  <ion-footer-bar align-title="left" class="bar-dark">
+    <div class="buttons">
+      <gf-button-rent offers="product.offerActions"></gf-button-rent>
+    </div>
+    <h1 class="title"></h1>
+    <div class="buttons">
+      <gf-button-buy offers="product.offerActions"></gf-button-buy>
+    </div>
+  </ion-footer-bar>
 </ion-view>

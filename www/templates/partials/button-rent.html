@@ -1,0 +1,11 @@
+<a class="button button-royal button-rent" ng-if="rentOffer" ng-click="onRent()">
+	<div ng-if="rentOffer.isAlreadyInQueue">In Queue</div>
+	<div ng-if="rentOffer.isRented">
+		<span class="text-uppercase pull-left">Keep</span>
+		<small class="pull-right"><gf-price list-price="keepOffer.listPrice" purchase-price="keepOffer.purchasePrice"></gf-price></small>
+	</div>
+	<div ng-if="!rentOffer.isAlreadyInQueue && !rentOffer.isRented">
+		<span class="text-uppercase pull-left">Rent</span>
+		<small class="pull-right">{{rentOffer.availability | gfAvailability}}</small>
+	</div>
+</a>
