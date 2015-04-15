@@ -1,5 +1,5 @@
 .flex-wrap {
-	flex-wrap: wrap;
+	@include flex-wrap(wrap);
 }
 
 .collapsed {
