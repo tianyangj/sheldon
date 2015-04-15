@@ -8,7 +8,7 @@
         My Cart
       </div>
 			<ion-item class="item-thumbnail-left" ng-repeat="item in primary.lineItems">
-				<img ng-src="{{item.product.thumbnailImage}}" ui-sref="app.product({productId:item.product.id,product:item.product})"/>
+				<img ng-src="{{item.product.thumbnailImage | gfProtocol}}" ui-sref="app.product({productId:item.product.id,product:item.product})"/>
  				<h3>{{item.product.title}}</h3>
  				<p>{{item.estimatedShippingDate}}</p>
         <p>{{item.product.platformId | gfPlatform}}</p>
@@ -27,7 +27,7 @@
         Saved For Later
       </div>
       <ion-item class="item-thumbnail-left" ng-repeat="item in secondary.lineItems">
-        <img ng-src="{{item.product.thumbnailImage}}" ui-sref="app.product({productId:item.product.id,product:item.product})"/>
+        <img ng-src="{{item.product.thumbnailImage | gfProtocol}}" ui-sref="app.product({productId:item.product.id,product:item.product})"/>
         <h3>{{item.product.title}}</h3>
         <p>{{item.estimatedShippingDate}}</p>
         <p>{{item.product.platformId | gfPlatform}}</p>

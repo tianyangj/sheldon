@@ -111,7 +111,7 @@
             <div class="item item-divider">Users Also Played</div>
             <div class="row row-bottom flex-wrap">
               <div class="col col-33" ng-repeat="recommendation in recommendations" ui-sref="app.product({productId:recommendation.id,product:recommendation})">
-                <img class="full-image" ng-src="{{recommendation.thumbnailImage}}" />
+                <img class="full-image" ng-src="{{recommendation.thumbnailImage | gfProtocol}}" />
               </div>
             </div>
           </div>

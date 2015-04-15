@@ -8,7 +8,7 @@
 			<ion-item class="item-avatar" ng-repeat="item in itemsQueued" ui-sref="app.product({productId:item.id,product:item})">
     		<ion-delete-button class="ion-minus-circled" ng-click="delete(item)">
 				</ion-delete-button>
-				<img ng-src="{{item.thumbnailImage}}" />
+				<img ng-src="{{item.thumbnailImage | gfProtocol}}" />
  				<h3>{{item.title}}</h3>
  				<p>Availability</p>
  				<ion-option-button class="button-assertive" ng-click="delete(item)">

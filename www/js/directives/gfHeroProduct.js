@@ -2,7 +2,7 @@
 
 angular.module('GameFly')
 
-.directive('gfHeroProduct', function() {
+.directive('gfHeroProduct', function($filter) {
 
 	return {
 		restrict: 'E',
@@ -20,7 +20,7 @@ angular.module('GameFly')
 					if (asset) {
 						var background = angular.element(el[0].querySelector('.hero-background'));
 						background.css({
-							'background-image': 'url(' + asset.rendered.url + ')'
+							'background-image': 'url(' + $filter('gfProtocol')(asset.rendered.url) + ')'
 						});
 						scope.asset = asset;
 					}

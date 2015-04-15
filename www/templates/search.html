@@ -10,7 +10,7 @@
   <ion-content>
 		<ul class="list">
     	<li class="item item-avatar" ng-repeat="item in items" ui-sref="app.product({productId:item.id,product:item})">
-    		<img ng-src="{{item.thumbnailImage}}" />
+    		<img ng-src="{{item.thumbnailImage | gfProtocol}}" />
     		<h3>{{item.title}}</h3>
     		<p>{{item.platformId | gfPlatform}}</p>
     	</li>
