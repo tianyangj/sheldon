@@ -21,12 +21,14 @@ angular.module('GameFly')
     });
   };
 
-  var add = function(productId) {
+  var add = function(productId, bypassPlatform, addPlatform) {
     return $http({
       method: 'POST',
       url: appConfig.getApiUrl('/rentalqueue/add'),
       data: {
-        productId: productId
+        productId: productId,
+        addPreferredPlatform: addPlatform,
+        bypassPlatformValidation: bypassPlatform
       }
     });
   };

@@ -26,12 +26,9 @@ angular.module('GameFly', ['ionic', 'ionic.rating', 'angular-carousel'])
         if (config.method === 'POST') {
           // https://developer.mozilla.org/en-US/docs/Web/API/Document/cookie
           var token = decodeURIComponent(document.cookie.replace(new RegExp("(?:(?:^|.*;)\\s*" + encodeURIComponent('XSRF-TOKEN').replace(/[\-\.\+\*]/g, "\\$&") + "\\s*\\=\\s*([^;]*).*$)|^.*$"), "$1")) || null;
-          config.headers['X-XSRF-TOKEN'] = token;
+          config.headers['X-XSRF-TOKEN'] = 'CjF2y_WK_L82kjqR2334FNLxcMivhgnCwj_VAeCiEqEI8kFm6NeVzAK3WQvHZaGDw5nQ7XjKTCyxoXX5TmmmkgxW17iBqk2YddkTSYCEypDaMidOfhpul60VI82B9mM2Y5N6dg2:-I3h-rJ26SS2zxmjc5SIGuN1TIDaIHMmd5DLkAYbd9TmQW4X_GRZFYZ6l2jyk1ZWnLl4Q_Pv6x-dsnir0hDOAmA2HwHXx3QNGchnK7dvgWoKddNQDQUwYhGpkGzPRL9NHMWODQ2';
         }
         return config;
-      },
-      responseError: function(rejection) {
-        alert(JSON.stringify(rejection))
       }
     };
   });

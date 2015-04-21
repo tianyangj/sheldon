@@ -35,12 +35,10 @@ angular.module('GameFly')
       method: 'POST',
       url: appConfig.getApiUrl('/cart/update'),
       data: {
-        changeQuantityItems: [
-          {
-            lineItemId: lineItemId,
-            quantity: quantity
-          }
-        ]
+        changeQuantityItems: [{
+          lineItemId: lineItemId,
+          quantity: quantity
+        }]
       }
     }).then(function(response) {
       return normalize(response.data);
@@ -52,21 +50,33 @@ angular.module('GameFly')
       method: 'POST',
       url: appConfig.getApiUrl('/cart/update'),
       data: {
-        moveItems: [
-          {
-            lineItemId: lineItemId,
-            groupToMoveTo: toGroup
-          }
-        ]
+        moveItems: [{
+          lineItemId: lineItemId,
+          groupToMoveTo: toGroup
+        }]
       }
     }).then(function(response) {
       return normalize(response.data);
     });
   };
 
+  var add = function(skuId, isKeep) {
+    return $http({
+      method: 'POST',
+      url: appConfig.getApiUrl('/cart/add'),
+      data: {
+        skuId: skuId,
+        isForKeep: isKeep
+      }
+    }).then(function(response) {
+      return normalize(response.data.cartResult);
+    });
+  };
+
   return {
     get: get,
     update: update,
-    move: move
+    move: move,
+    add: add
   };
 });
