@@ -2,7 +2,7 @@
 
 angular.module('GameFly')
 
-.directive('gfButtonRent', function($ionicPopup, queueService, cartService) {
+.directive('gfButtonRent', function() {
 
 	return {
 		restrict: 'E',
@@ -10,7 +10,7 @@ angular.module('GameFly')
 		scope: {
 			product: '='
 		},
-		controller: function($scope, $state) {
+		controller: function($scope, $state, $ionicPopup, queueService, cartService) {
 
 			function showConfirmation() {
 				$ionicPopup.confirm({

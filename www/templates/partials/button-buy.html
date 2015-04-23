@@ -7,12 +7,15 @@
 		<span class="text-uppercase pull-left">Pre-Order</span>
 		<small class="pull-right"><gf-price list-price="newOffer.listPrice" purchase-price="newOffer.purchasePrice"></gf-price></small>
 	</div>
-	<div ng-switch-when="Buy New">
+	<div ng-switch-when="Buy-New">
 		<span class="text-uppercase pull-left">Buy</span>
 		<small class="pull-right">New <gf-price list-price="newOffer.listPrice" purchase-price="newOffer.purchasePrice"></gf-price></small>
 	</div>
-	<div ng-switch-when="Buy Used">
+	<div ng-switch-when="Buy-Used">
 		<span class="text-uppercase pull-left">Buy</span>
 		<small class="pull-right">Used <gf-price list-price="usedOffer.listPrice" purchase-price="usedOffer.purchasePrice"></gf-price></small>
+	</div>
+	<div ng-switch-when="In-Cart">
+		In Cart
 	</div>
 </a>
