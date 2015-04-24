@@ -26,7 +26,7 @@
             </div>
             <ion-scroll direction="x">
               <div class="row row-bottom">
-                <div class="col col-image" ng-click="openImageSlider()" ng-repeat="image in images.items">
+                <div class="col col-image" ng-click="openImageSlider($index)" ng-repeat="image in images.items">
                   <img class="full-image" ng-src="{{image.item.sources[3].url}}" />
                 </div>
               </div>

@@ -2,32 +2,19 @@
 
 angular.module('GameFly')
 
-.controller('ImageSliderController', function($scope, $state, $ionicHistory, modalService, platformConstants) {
+.controller('ImageSliderController', function($scope, $timeout, $ionicSlideBoxDelegate, modalService) {
 
 	$scope.close = function() {
-		modalService.remove('system');
+		modalService.remove('imageSlider');
 	};
 
-	$scope.updateSystem = function(system) {
-		modalService.remove('system');
-		$ionicHistory.nextViewOptions({
-			disableAnimate: true,
-			disableBack: true
-		});
-		$state.go('app.' + $scope.vertical, {
-			platform: system ? system.name : null
-		});
-	};
-
-	switch ($scope.vertical) {
-		case 'games':
-			$scope.systems = platformConstants.games;
-			break;
-		case 'movies':
-			$scope.systems = platformConstants.movies;
-			break;
-		case 'store':
-			$scope.systems = platformConstants.stores;
-			break;
+	$scope.onSlideChanged = function(index) {
+		$scope.imageIndex = index;
 	}
+
+	$scope.$watch('imageIndex', function(index) {
+		$timeout(function() {
+			$ionicSlideBoxDelegate.slide($scope.imageIndex);
+		});
+	});
 });
