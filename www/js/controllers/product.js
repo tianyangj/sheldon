@@ -2,7 +2,7 @@
 
 angular.module('GameFly')
 
-.controller('productController', function($scope, $stateParams, productService) {
+.controller('productController', function($scope, $stateParams, productService, modalService) {
   console.log('productController', $stateParams);
   if ($stateParams.product) {
   	$scope.product = $stateParams.product;
@@ -44,6 +44,10 @@ angular.module('GameFly')
         $scope.isDetails = true;
         $scope.isReviews = $scope.isRelated = false;
     }
+  };
+
+  $scope.openImageSlider = function() {
+    modalService.show('imageSlider', $scope);
   };
 
 });
