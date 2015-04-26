@@ -7670,8 +7670,8 @@ a.button {
     background-color: rgba(0, 0, 0, 0.5);
     color: #fff; }
     .hero-unit .info img {
-      border: 1px solid;
-      border-radius: 5px; }
+      max-width: 100%;
+      max-height: 180px; }
     .hero-unit .info h1 {
       font-size: 18px;
       color: #fff; }
