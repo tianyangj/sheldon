@@ -7740,6 +7740,8 @@ ul.rating {
     -webkit-box-orient: vertical; }
   .thumbnail .caption p {
     margin: 0; }
+  .thumbnail .caption small {
+    font-size: 80%; }
 
 .list .item.item-accordion {
   line-height: 38px;

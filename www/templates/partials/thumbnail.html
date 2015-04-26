@@ -1,8 +1,8 @@
 <div class="thumbnail" ui-sref="app.product({productId:product.id,product:product})">
 	<img class="full-image" ng-src="{{product.thumbnailImage | gfProtocol}}" />
 	<div class="caption">
-		<h5>{{product.title}}</h5>
-		<p>{{product.platformId | gfPlatform}}</p>
-		<p>RENT</p>
+		<h5>{{::product.title}}</h5>
+		<p>{{::product.platformId | gfPlatform}}</p>
+		<small>{{::product.releaseDate | gfReleaseDate}}</small>
 	</div>
 </div>
