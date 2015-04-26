@@ -1,14 +1,16 @@
-<ion-modal-view ng-controller="ImageSliderController">
+<ion-modal-view ng-controller="VideoPlayerController">
 	<ion-header-bar class="bar-dark">
-    <h1 class="title">{{imageIndex + 1}} / {{images.totalItems}}</h1>
+    <h1 class="title">{{videoIndex + 1}} / {{videos.totalItems}}</h1>
     <div class="buttons">
       <button class="button button-clear icon ion-ios-close-empty" ng-click="close()"></button>
     </div>
   </ion-header-bar>
   <ion-content scroll="false" has-bouncing="false">
 	  <ion-slide-box show-pager="false" on-slide-changed="onSlideChanged($index)">
-		  <ion-slide ng-repeat="image in images.items">
-		    <img class="fullscreen-image" ng-src="{{image.item.sources[1].url}}">
+		  <ion-slide ng-repeat="video in videos.items">
+		    <video ng-attr-poster="{{video.item.previewUrl}}" controls>
+		    	<source ng-src="{{video.item.sources[0].url}}" type="video/mp4">
+		    </video>
 		  </ion-slide>
 		</ion-slide-box>
 	</ion-content>

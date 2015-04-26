@@ -51,4 +51,9 @@ angular.module('GameFly')
     modalService.show('imageSlider', $scope);
   };
 
+  $scope.openVideoPlayer = function(index) {
+    $scope.videoIndex = index;
+    modalService.show('videoPlayer', $scope);
+  };
+
 });

@@ -38,7 +38,7 @@
             </div>
             <ion-scroll direction="x">
               <div class="row row-bottom">
-                <div class="col col-video" ng-repeat="video in videos.items">
+                <div class="col col-video" ng-click="openVideoPlayer($index)" ng-repeat="video in videos.items">
                   <img class="full-image" ng-src="{{video.item.previewUrl}}" />
                   <span class="duration">{{video.item.duration | gfDuration}}</span>
                   <span class="icon ion-play"></span>
