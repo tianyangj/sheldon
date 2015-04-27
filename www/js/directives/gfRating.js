@@ -6,11 +6,14 @@ angular.module('GameFly')
 
 	return {
 		restrict: 'E',
-		template: '<rating ng-model="rate" max="max"></rating> <span>({{count}})</span>',
+		template: '<div ng-if="::rate">' +
+			'<rating ng-model="rate" max="max" readonly="readonly"></rating> <span ng-if="::count">({{count}})</span>' +
+			'</div>',
 		scope: {
 			rate: '=',
 			max: '=',
-			count: '='
+			count: '=',
+			readonly: '='
 		}
 	};
 });

@@ -4,11 +4,12 @@
   </ion-nav-buttons>
   <ion-content>
     <ul class="list">
-    	<li class="item item-thumbnail-left item-button-right" ng-repeat="item in items">
+    	<li class="item item-thumbnail-left item-button-right" ng-repeat="item in items" ui-sref="app.product({productId:item.id,product:item})">
     		<img ng-src="{{item.thumbnailImage | gfProtocol}}">
       	<h2>{{item.title}}</h2>
       	<p>{{item.platformId | gfPlatform}}</p>
-      	<p><gf-rating rate="item.userRating/2" max="5"></gf-rating></p>
+        <p>{{item.releaseDate | gfReleaseDate}}</p>
+      	<p><gf-rating rate="item.userRating/2" max="5" readonly="true"></gf-rating></p>
       	<button class="button button-royal">
       		<i class="icon ion-forward"></i>
       	</button>
