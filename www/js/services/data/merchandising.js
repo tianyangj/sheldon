@@ -5,7 +5,7 @@ angular.module('GameFly')
 .factory('merchandisingService', function($http, appConfig) {
 
   var buildIds = function(vertical, platformIds) {
-    if (platformIds.length) {
+    if (platformIds && platformIds.length) {
       return platformIds.map(function(platformId) {
         return vertical + '.' + platformId;
       });

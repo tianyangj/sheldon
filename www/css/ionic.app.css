@@ -7784,6 +7784,23 @@ ul.rating {
 .text-uppercase {
   text-transform: uppercase; }
 
+.page-discover td-card {
+  position: absolute;
+  left: 50%;
+  margin-left: -150px;
+  width: 300px;
+  background-color: #fff; }
+.page-discover .tinder {
+  padding: 5px; }
+  .page-discover .tinder .img-wrapper {
+    width: 100%;
+    height: 320px;
+    text-align: center; }
+  .page-discover .tinder .button {
+    color: #d65611; }
+  .page-discover .tinder .button::before {
+    font-size: 300%; }
+
 .main-container {
   position: relative; }
   .main-container .tabs {

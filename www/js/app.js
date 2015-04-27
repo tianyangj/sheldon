@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('GameFly', ['ionic', 'ionic.rating', 'angular-carousel'])
+angular.module('GameFly', ['ionic', 'ionic.contrib.ui.tinderCards', 'ionic.rating', 'angular-carousel'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -137,6 +137,16 @@ angular.module('GameFly', ['ionic', 'ionic.rating', 'angular-carousel'])
       'menuContent': {
         templateUrl: 'templates/cart.html',
         controller: 'cartController'
+      }
+    }
+  })
+
+  .state('app.discover', {
+    url: '/discover',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/discover.html',
+        controller: 'DiscoverController'
       }
     }
   })
