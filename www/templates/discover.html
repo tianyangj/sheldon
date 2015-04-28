@@ -2,19 +2,25 @@
   <ion-nav-buttons side="right">
     <button class="button button-icon icon ion-ios-upload-outline"></button>
   </ion-nav-buttons>
-  <ion-content has-bouncing="false" class="page-discover padding">
+  <ion-content has-bouncing="false" class="page-discover">
 		<td-cards>
-      <td-card ng-repeat="item in merchandising.featureds" on-destroy="cardDestroyed($index)" on-swipe="cardSwiped($index)">
-        <div class="tinder">
-          <div class="img-wrapper">
-            <img class="full-iddmage" ng-src="{{item.product.detailImage}}" />
-          </div>
-          <div class="row text-center">
-            <div class="col"><button class="button button-icon icon ion-close-circled"></button></div>
-            <div class="col"><button class="button button-icon icon ion-checkmark-circled"></button></div>
+      <td-card ng-repeat="suggestion in suggestions" on-destroy="cardDestroyed($index)" on-swipe="cardSwiped($index)">
+        <div class="card">
+          <div class="card-body">
+            <div class="image">
+              <img ng-src="{{suggestion.detailImage.replace('190w','480w') | gfProtocol}}">
+            </div>
+            <div class="card-footer">
+              Gamefly User Rating: {{suggestion.userRating}} / 10
+            </div>
           </div>
         </div>
       </td-card>
     </td-cards>
   </ion-content>
+  <ion-footer-bar align-title="left" class="bar-dark">
+    <button class="button button-icon icon ion-close-circled"></button>
+    <h1 class="title"></h1>
+    <button class="button button-icon icon ion-checkmark-circled"></button>
+  </ion-footer-bar>
 </ion-view>

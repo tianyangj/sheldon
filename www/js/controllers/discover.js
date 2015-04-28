@@ -2,15 +2,14 @@
 
 angular.module('GameFly')
 
-.controller('DiscoverController', function($scope, merchandisingService) {
+.controller('DiscoverController', function($scope, productService) {
 
-	console.log($scope);
-
-	merchandisingService.get('games').then(function(merchandising) {
-		merchandising.featureds.forEach(function(item) {
-			item.product.detailImage = item.product.detailImage.replace('190w', '480w');
-		})
-		$scope.merchandising = merchandising;
+	productService.query({
+		mostpopular: true,
+		productType: 'ConsoleGame',
+		'sort.direction': 'desc',
+		'sort.field': 'mostpopular'
+	}).then(function(data) {
+		$scope.suggestions = data.items;
 	});
-
 });
