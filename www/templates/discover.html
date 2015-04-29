@@ -2,7 +2,7 @@
   <ion-nav-buttons side="right">
     <button class="button button-icon icon ion-ios-upload-outline"></button>
   </ion-nav-buttons>
-  <ion-content has-bouncing="false" class="page-discover">
+  <ion-content has-bouncing="false" scroll="false" class="page-discover">
 		<td-cards>
       <td-card ng-repeat="card in cards" on-destroy="cardDestroyed($index)" on-swipe="cardSwiped($index)" on-swipe-left="cardSwipedLeft($index)" on-swipe-right="cardSwipedRight($index)">
         <div class="card">
