@@ -7792,9 +7792,40 @@ ul.rating {
   text-align: center; }
   .page-discover td-card .image {
     height: 320px; }
+  .page-discover td-card .card-body {
+    position: relative; }
   .page-discover td-card .card-footer {
     height: 40px;
     line-height: 40px; }
+  .page-discover td-card .no-text, .page-discover td-card .yes-text {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0; }
+  .page-discover td-card .boxed {
+    height: 50px;
+    width: 100px;
+    padding: 10px;
+    border-radius: 6px;
+    font-size: 30px; }
+  .page-discover td-card .yes-text {
+    background-color: rgba(51, 205, 95, 0.2); }
+  .page-discover td-card .no-text {
+    background-color: rgba(239, 71, 58, 0.2); }
+  .page-discover td-card .yes-box {
+    margin: 10% 60% 0% 10%;
+    border: 2px solid #33cd5f;
+    color: #33cd5f;
+    -webkit-transform: rotate(-25deg);
+    transform: rotate(-25deg); }
+  .page-discover td-card .no-box {
+    margin: 10% 10% 0% 60%;
+    border: 2px solid #ef473a;
+    color: #ef473a;
+    -webkit-transform: rotate(25deg);
+    transform: rotate(25deg); }
+.page-discover td-card:last-child {
+  z-index: 10; }
 
 .main-container {
   position: relative; }

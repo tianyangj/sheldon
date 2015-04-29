@@ -11,9 +11,54 @@
 	  		height: 320px;
 	  	}
 
+	  	.card-body {
+	  		position: relative;
+	  	}
+
 	  	.card-footer {
 	  		height: 40px;
 	  		line-height: 40px;
 	  	}
+
+	  	.no-text, .yes-text {
+	  		position: absolute;
+	  		width: 100%;
+	  		height: 100%;
+	  		opacity: 0;
+	  	}
+
+	  	.boxed {
+		    height: 50px;
+		    width: 100px;
+		    padding: 10px;
+		    border-radius: 6px;
+		    font-size: 30px;
+		}
+
+		.yes-text {
+		    background-color: rgba($balanced, 0.2);
+		}
+
+		.no-text {
+		    background-color: rgba($assertive, 0.2);
+		}
+
+		.yes-box {
+		    margin: 10% 60% 0% 10%;
+		    border: 2px solid $balanced;
+		    color: $balanced;
+		    @include rotate(-25deg);
+		}
+
+		.no-box {
+			margin: 10% 10% 0% 60%;
+		    border: 2px solid $assertive;
+		    color: $assertive;
+		    @include rotate(25deg);
+		}
+	}
+
+	td-card:last-child {
+		z-index:10;
 	}
 }
