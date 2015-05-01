@@ -6,6 +6,6 @@
 	</div>
 	<div ng-if="!rentOffer.isAlreadyInQueue && !rentOffer.isRented">
 		<span class="text-uppercase pull-left">Rent</span>
-		<small class="pull-right">{{rentOffer.availability | gfAvailability}}</small>
+		<small class="pull-right">{{rentOffer | gfAvailability}}</small>
 	</div>
 </a>

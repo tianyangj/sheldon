@@ -2,7 +2,7 @@
 
 angular.module('GameFly')
 
-.controller('queueController', function($scope, queueService) {
+.controller('QueueController', function($scope, queueService) {
 
   queueService.get().then(function(data) {
 		$scope.itemsOut = data.itemsOut;

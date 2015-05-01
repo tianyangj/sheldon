@@ -1,3 +1,6 @@
+/// <reference path="../../typings/angularjs/angular.d.ts"/>
+/// <reference path="../../typings/lodash/lodash.d.ts"/>
+
 'use strict';
 
 angular.module('GameFly', ['ionic', 'ionic.contrib.ui.tinderCards', 'ionic.rating', 'angular-carousel'])
@@ -126,7 +129,7 @@ angular.module('GameFly', ['ionic', 'ionic.contrib.ui.tinderCards', 'ionic.ratin
     views: {
       'menuContent': {
         templateUrl: 'templates/queue.html',
-        controller: 'queueController'
+        controller: 'QueueController'
       }
     }
   })

@@ -2,18 +2,37 @@
 
 angular.module('GameFly')
 
-.factory('queueService', function($http, appConfig) {
+  .factory('queueService', function ($http, appConfig) {
 
-  var get = function() {
+  var get = function () {
     return $http({
       method: 'GET',
       url: appConfig.getApiUrl('/rentalqueue/get')
-    }).then(function(response) {
-      return response.data;
+    }).then(function (response) {
+      var itemsOut = response.data.itemsOut.map(function (item) {
+        return angular.extend({
+          dateSent: item.dateSent,
+          isBonusGame: item.isBonusGame,
+          isFastReturn: item.sentDueToFastReturn,
+          keepOffer: _.find(item.product.offerActions, function (offer) {
+            return offer.offerActionType === 'Keep';
+          })
+        }, item.product);
+      });
+      var itemsQueued = response.data.itemsQueued.map(function (item) {
+        item.rentOffer = _.find(item.offerActions, function (offer) {
+          return offer.offerActionType === 'Rent';
+        });
+        return item;
+      });
+      return {
+        itemsOut: itemsOut,
+        itemsQueued: itemsQueued
+      };
     });
   };
 
-  var modify = function(productIds) {
+  var modify = function (productIds) {
     return $http({
       method: 'POST',
       url: appConfig.getApiUrl('/rentalqueue/modify'),
@@ -21,7 +40,7 @@ angular.module('GameFly')
     });
   };
 
-  var add = function(productId, bypassPlatform, addPlatform) {
+  var add = function (productId, bypassPlatform, addPlatform) {
     return $http({
       method: 'POST',
       url: appConfig.getApiUrl('/rentalqueue/add'),

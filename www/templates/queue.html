@@ -1,24 +1,32 @@
 <ion-view view-title="Queue">
-  <ion-nav-buttons side="right">
-  	<button class="button button-clear" ng-click="enableDelete()">Edit</button>
-    <button class="button button-clear" ng-click="enableReorder()">Reorder</button>
-  </ion-nav-buttons>
-  <ion-content>
-    <ion-list show-delete="isDelete" show-reorder="isReorder">
-			<ion-item class="item-avatar" ng-repeat="item in itemsQueued" ui-sref="app.product({productId:item.id,product:item})">
-    		<ion-delete-button class="ion-minus-circled" ng-click="delete(item)">
-				</ion-delete-button>
-				<img ng-src="{{item.thumbnailImage | gfProtocol}}" />
- 				<h3>{{item.title}}</h3>
- 				<p>Availability</p>
- 				<ion-option-button class="button-assertive" ng-click="delete(item)">
-      		Delete
-     		</ion-option-button>
-    		<ion-option-button class="button-calm">
-      		Share
-       	</ion-option-button>
-   			<ion-reorder-button class="ion-navicon" on-reorder="reorder(item, $fromIndex, $toIndex)"></ion-reorder-button>
- 			</ion-item>
+	<ion-nav-buttons side="right">
+		<button class="button button-clear" ng-click="enableDelete()">Edit</button>
+		<button class="button button-clear" ng-click="enableReorder()">Reorder</button>
+	</ion-nav-buttons>
+	<ion-content>
+		<ion-list show-delete="isDelete" show-reorder="isReorder">
+			<div class="item item-divider">I Have Out</div>
+			<div class="item item-thumbnail-left item-button-right" ng-repeat="item in itemsOut">
+				<img ng-src="{{item.thumbnailImage | gfProtocol}} " ui-sref="app.product({productId:item.id,product:item}) " />
+				<h2>{{item.title}}</h2>
+				<p>Shipped on {{item.dateSent | date}}</p>
+				<p>Keep for
+					<gf-price list-price="item.keepOffer.listPrice" purchase-price="item.keepOffer.purchasePrice"></gf-price>
+				</p>
+				<button class="button button-royal ">
+					<i class="icon ion-ios-cart "></i>
+				</button>
+			</div>
+			<div class="item item-divider">On My List ({{itemsQueued.length}}/50)</div>
+			<ion-item class="item item-thumbnail-left" ng-repeat="item in itemsQueued ">
+				<ion-delete-button class="ion-minus-circled " ng-click="delete(item) "></ion-delete-button>
+				<img ng-src="{{item.thumbnailImage | gfProtocol}} " ui-sref="app.product({productId:item.id,product:item})"/>
+				<h2>{{item.title}}</h2>
+				<p>{{item.rentOffer | gfAvailability}}</p>
+				<ion-option-button class="button-assertive " ng-click="delete(item) ">Delete</ion-option-button>
+				<ion-option-button class="button-calm ">Share</ion-option-button>
+				<ion-reorder-button class="ion-navicon " on-reorder="reorder(item, $fromIndex, $toIndex) "></ion-reorder-button>
+			</ion-item>
 		</ion-list>
-  </ion-content>
+	</ion-content>
 </ion-view>
