@@ -139,7 +139,7 @@ angular.module('GameFly', ['ionic', 'ionic.contrib.ui.tinderCards', 'ionic.ratin
     views: {
       'menuContent': {
         templateUrl: 'templates/cart.html',
-        controller: 'cartController'
+        controller: 'CartController'
       }
     }
   })

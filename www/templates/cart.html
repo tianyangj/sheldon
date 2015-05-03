@@ -2,17 +2,26 @@
   <ion-nav-buttons side="right">
   	<button class="button button-clear" ng-click="checkout()">Checkout</button>
   </ion-nav-buttons>
-  <ion-content>
+  <ion-content class="page-cart">
     <ion-list>
       <div class="item item-divider">
-        My Cart
+        My Cart ({{primary.lineItems.length}} items)
       </div>
-			<ion-item class="item-thumbnail-left" ng-repeat="item in primary.lineItems">
-				<img ng-src="{{item.product.thumbnailImage | gfProtocol}}" ui-sref="app.product({productId:item.product.id,product:item.product})"/>
- 				<h3>{{item.product.title}}</h3>
- 				<p>{{item.estimatedShippingDate}}</p>
+			<ion-item class="item item-thumbnail-left" ng-repeat="item in primary.lineItems">
+        <div class="img-wrapper" ui-sref="app.product({productId:item.product.id,product:item.product})">
+				  <img ng-src="{{item.product.thumbnailImage | gfProtocol}}" />
+        </div>
+        <h3>{{item.product.title}}</h3>
         <p>{{item.product.platformId | gfPlatform}}</p>
-        <p>{{item.price | gfPrice}}</p>
+ 				<p>Ships <span class="text-lowercase">{{item.estimatedShippingDate}}</span></p>
+        <label class="item-input item-select">
+          <div class="input-label">
+            {{item.price | gfPrice}} 
+          </div>
+          <select>
+            <option ng-repeat="n in [] | gfRange:item.quantityLimit">{{n+1}}</option>
+          </select>
+        </label>
  				<ion-option-button class="button-assertive" ng-click="deletePrimary(item)">
       		Remove
      		</ion-option-button>
@@ -20,18 +29,21 @@
       		Save for Later
        	</ion-option-button>
  			</ion-item>
-      <div class="item">
-        Subtotal: {{priceInfo.subtotal | gfPrice}}
-      </div>
+      <!--<div class="item item-button-right">
+        Subtotal ({{primary.lineItems.length}} items): {{priceInfo.subtotal | gfPrice}}
+        <button class="button button-assertive">Checkout</button>
+      </div>-->
       <div class="item item-divider">
         Saved For Later
       </div>
       <ion-item class="item-thumbnail-left" ng-repeat="item in secondary.lineItems">
-        <img ng-src="{{item.product.thumbnailImage | gfProtocol}}" ui-sref="app.product({productId:item.product.id,product:item.product})"/>
+        <div class="img-wrapper" ui-sref="app.product({productId:item.product.id,product:item.product})">
+          <img ng-src="{{item.product.thumbnailImage | gfProtocol}}" />
+        </div>
         <h3>{{item.product.title}}</h3>
-        <p>{{item.estimatedShippingDate}}</p>
         <p>{{item.product.platformId | gfPlatform}}</p>
-        <p>{{item.price | gfPrice}}</p>
+        <p>Ships <span class="text-lowercase">{{item.estimatedShippingDate}}</span></p>
+        <div>{{item.price | gfPrice}}</div>
         <ion-option-button class="button-assertive" ng-click="deleteSecondary(item)">
           Remove
         </ion-option-button>
@@ -41,4 +53,10 @@
       </ion-item>
 		</ion-list>
   </ion-content>
+  <ion-footer-bar align-title="left" class="bar-dark">
+    <h1 class="title">Subtotal: {{priceInfo.subtotal | gfPrice}}</h1>
+    <div class="buttons">
+      <button class="button button-royal">Checkout</button>
+    </div>
+  </ion-footer-bar>
 </ion-view>

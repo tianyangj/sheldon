@@ -2,7 +2,7 @@
 
 angular.module('GameFly')
 
-.controller('cartController', function($scope, cartService) {
+.controller('CartController', function($scope, cartService) {
 
   function databind(data) {
     console.log('cartController.databind', data)
