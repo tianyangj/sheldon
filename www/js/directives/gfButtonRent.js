@@ -103,7 +103,7 @@ angular.module('GameFly')
 			};
 
 			$scope.$watch('product.offerActions', function(newVal, oldVal) {
-				if (newVal !== oldVal) {
+				if (newVal || newVal !== oldVal) {
 					var rentOffer = _(newVal).find(function(offer) {
 						return offer.offerActionType === 'Rent';
 					});

@@ -7799,6 +7799,17 @@ ul.rating {
   .thumbnail .caption small {
     font-size: 80%; }
 
+.item .img-wrapper {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 80px;
+  height: 80px;
+  text-align: center; }
+  .item .img-wrapper img {
+    max-width: 100%;
+    max-height: 100%; }
+
 .list .item.item-accordion {
   line-height: 38px;
   padding-top: 0;
@@ -7949,6 +7960,9 @@ ul.rating {
     position: fixed;
     right: 0;
     top: 0; }
+
+.page-queue .button-rent {
+  width: 100px; }
 
 .bar span.search-result {
   width: 90px;
