@@ -1,3 +1,5 @@
+/// <reference path="../../../typings/angularjs/angular.d.ts"/>
+
 'use strict';
 
 angular.module('GameFly')
@@ -5,7 +7,6 @@ angular.module('GameFly')
 .controller('CartController', function($scope, cartService) {
 
   function databind(data) {
-    console.log('cartController.databind', data)
     $scope.primary = data.primary;
     $scope.secondary = data.secondary;
     $scope.bulletins = data.bulletins;
@@ -28,5 +29,9 @@ angular.module('GameFly')
 
   $scope.movePrimary = function(item) {
     cartService.move(item.id, 0).then(databind);
+  };
+  
+  $scope.updateQuantity = function(item) {
+    cartService.update(item.id, item.quantity).then(databind);
   };
 });

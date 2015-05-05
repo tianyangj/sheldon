@@ -18,7 +18,7 @@
           <div class="input-label">
             {{item.price | gfPrice}} 
           </div>
-          <select>
+          <select ng-model="item.quantity" ng-change="updateQuantity(item)">
             <option ng-repeat="n in [] | gfRange:item.quantityLimit">{{n+1}}</option>
           </select>
         </label>
@@ -47,7 +47,7 @@
         <ion-option-button class="button-assertive" ng-click="deleteSecondary(item)">
           Remove
         </ion-option-button>
-        <ion-option-button class="button-calm" ng-click="movePrimary(item)">
+        <ion-option-button class="button-calm" ng-click="movePrimary(item)" ng-if="item.isAvailableForPurchase">
           Add to Cart
         </ion-option-button>
       </ion-item>
